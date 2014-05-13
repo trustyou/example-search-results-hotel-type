@@ -5,28 +5,150 @@
 	This is the list of hotels that this example is based on. It is
 	hardcoded here; in all real-life applications, these IDs and names
 	would be a result of a query.
+
+	The picked hotels represent the best hotels in Berlin, categorized by type.
+
+	While we have used a custom ranking function for selecting the hotels,
+	it is of course possible to build such a function yourself solely based on
+	the data we provide. An easy implementation would.
+	
+	Of course, much more sophisticated ranking procedures are possible
+	(and probably preferrable).
 	*/
+
+	// we need to preserve order for processing in a later step, hence the array
 	var hotels = [
-	{
-		name: "Hotel Adlon Kempinski",
-		tyId: "60fd56b6-8f61-4672-a1d3-d76ec6bcf540"
-	},
-	{
-		name: "The Mandala Hotel",
-		tyId: "a6d7ac66-51ca-46b4-9a74-57324a2977b4"
-	},
-	{
-		name: "Das Stue",
-		tyId: "359e1e4b-569a-4f97-aaa1-357f241a851b"
-	},
-	{
-		name: "Adina Apartment Hotel Berlin Hackescher Markt",
-		tyId: "387d25e2-4321-4b45-a02a-e548a460383a"
-	},
-	{
-		name: "Regent Berlin",
-		tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb"
-	}
+		{"all": [
+			{
+				name: "Hotel Adlon Kempinski",
+				tyId: "60fd56b6-8f61-4672-a1d3-d76ec6bcf540",
+				image: "img/Hotel_Adlon_Kempinski.jpg"
+			},
+			{
+				name: "The Mandala Hotel",
+				tyId: "a6d7ac66-51ca-46b4-9a74-57324a2977b4",
+				image: "img/The_Mandala_Hotel.jpg"
+			},
+			{
+				name: "Das Stue",
+				tyId: "359e1e4b-569a-4f97-aaa1-357f241a851b",
+				image: "img/Das_Stue_Hotel.jpg"
+			},
+			{
+				name: "Adina Apartment Hotel Berlin Hackescher Markt",
+				tyId: "387d25e2-4321-4b45-a02a-e548a460383a",
+				image: "img/Adina_Apartment_Hotel.jpg"
+			},
+			{
+				name: "Regent Berlin",
+				tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb",
+				image: "img/Regent_Berlin.jpg"
+			}]},
+		{"business": [
+			{
+				name: "Airporthotel Berlin Adlerhof",
+				tyId: "65737854-432f-4b06-a002-7cff191e074a",
+				image: "img/Airporthotel_Berlin_Adlerhof.jpg"
+			},
+			{
+				name: "The Mandala Hotel",
+				tyId: "a6d7ac66-51ca-46b4-9a74-57324a2977b4",
+				image: "img/The_Mandala_Hotel.jpg"
+			},
+			{
+				name: "Ibis Berlin Messe",
+				tyId: "861fe349-686f-4d55-9e6d-d1d9cfcec319",
+				image: "img/Ibis_Berlin_Messe.jpg"
+			},
+			{
+				name: "Motel One Berlin-Spittelmarkt",
+				tyId: "759630e9-5a8a-4e62-963b-83d5b03d4e43",
+				image: "img/Motel_One_Berlin-Spittelmarkt.jpg"
+			},
+			{
+				name: "Grand Hotel Esplanade Berlin",
+				tyId: "179a2c7e-f2eb-47f6-8a13-f80738656006",
+				image: "img/Grand_Hotel_Esplanade_Berlin.jpg"
+			}
+		]},
+		{"family": [
+			{
+				name: "Mitte Inn Berlin",
+				tyId: "84efccf5-c165-4e66-a554-bdb0e08c808d",
+				image: "img/Mitte_Inn_Berlin.jpg"
+			},
+			{
+				name: "Akzent Hotel am Forum Steglitz",
+				tyId: "1c9f79c1-3f1f-4f94-9efb-a132dccb0d4d",
+				image: "img/Akzent_Hotel_am_Forum_Steglitz.jpg"
+			},
+			{
+				name: "Louisa's Place",
+				tyId: "51fa5415-45d4-4bff-a104-e2098931ccdd",
+				image: "img/Louisas_Place.jpg"
+			},
+			{
+				name: "Citylight Hotel",
+				tyId: "a0cded15-9aaa-49bc-855d-52ffbc169105",
+				image: "img/Citylight_Hotel.jpg"
+			},
+			{
+				name: "Suite Novotel Ber Potsdamer Pl",
+				tyId: "b631adf6-92e3-437d-99e4-f96dce092b31",
+				image: "img/Suite_Novotel_Ber_Potsdamer_Pl.jpg"
+			}]},
+		{"romantic": [
+			{
+				name: "Meliá Hotel Berlin",
+				tyId: "1a2c0327-6830-430d-bde9-5b446dbb2734",
+				image: "img/Melia_Hotel_Berlin.jpg"
+			},
+			{
+				name: "Hotel Palace Berlin",
+				tyId: "6dc50053-4f47-407b-866c-0be5595c4b63",
+				image: "img/Hotel_Palace_Berlin.jpg"
+			},
+			{
+				name: "Radisson BLU Hotel",
+				tyId: "4d3137f4-cdec-4050-9026-fcfe453e30a7",
+				image: "img/Radisson_BLU_Hotel.jpg"
+			},
+			{
+				name: "Adina Apartment Hotel Berlin Checkpoint Charlie",
+				tyId: "72ed40a4-1680-42be-b94c-626c13de1ea7",
+				image: "img/Adina_Apartment_Hotel_Berlin_Checkpoint_Charlie.jpg"
+			},
+			{
+				name: "Michelberger Hotel",
+				tyId: "68717314-3769-4e9a-84aa-1915c42d5889",
+				image: "img/Michelberger_Hotel.jpg"
+			}]},
+		{"luxury": [
+			{
+				name: "Hotel Adlon Kempinski",
+				tyId: "60fd56b6-8f61-4672-a1d3-d76ec6bcf540",
+				image: "img/Hotel_Adlon_Kempinski.jpg"
+			},
+			{
+				name: "Adina Apartment Hotel Berlin Hackescher Markt",
+				tyId: "387d25e2-4321-4b45-a02a-e548a460383a",
+				image: "img/Adina_Apartment_Hotel_Berlin_Hackescher_Markt.jpg"
+			},
+			{
+				name: "Adina Apartment Hotel Berlin Checkpoint Charlie",
+				tyId: "72ed40a4-1680-42be-b94c-626c13de1ea7",
+				image: "img/Adina_Apartment_Hotel_Berlin_Checkpoint_Charlie.jpg"
+			},
+			{
+				name: "H10 Berlin Ku'damm",
+				tyId: "9651726f-855f-4420-8b3a-3de1e0ccea48",
+				image: "img/H10_Berlin_Kudamm.jpg"
+			},
+			{
+				name: "Hotel de Rome",
+				tyId: "652088f5-fcfa-4e46-b44f-85200355acfa",
+				image: "img/Hotel_de_Rome.jpg"
+			}]},
 	];
 
 	/*
@@ -35,13 +157,18 @@
 	version need to be passed with each individual request, but the
 	mandatory API key need only be put once in the bulk request.
 	*/
-	var requestList = hotels.map(function(hotel) {
-		/*
-		When querying a JSON widget, always ask for the specific
-		version you developed against. This guarantees that no schema-
-		breaking changes will affect your code.
-		*/
-		return "/hotels/" + hotel.tyId + "/tops_flops.json?" + $.param({lang: "en", v: "5.16"});
+	var requestList = [];
+	hotels.forEach(function(catHotels) {
+		for (var cat in catHotels) break;
+		var catRequestList = catHotels[cat].map(function(hotel) {
+			/*
+			When querying a JSON widget, always ask for the specific
+			version you developed against. This guarantees that no schema-
+			breaking changes will affect your code.
+			*/
+			return "/hotels/" + hotel.tyId + "/tops_flops.json?" + $.param({lang: "en", v: "5.16"});
+		});
+		requestList.push.apply(requestList, catRequestList);
 	});
 	// JSON-encode the request list
 	requestList = JSON.stringify(requestList);
@@ -68,8 +195,8 @@
 
 		// if a new filter is selected, activate it and deactivate others
 
-		$('.tile > a').on('click', function(event){
-			if(!$(this).parent().hasClass('selected')){
+		$('.tile > a').on('click', function(event) {
+			if(!$(this).parent().hasClass('selected')) {
 				$('.tile').removeClass('selected');
 				$(this).parent().addClass('selected');
 			}
@@ -77,55 +204,12 @@
 	});
 
 	/**
-	Render a recommended hotel.
-
-	@param hotelData - Data for this hotel from your database, e.g. its name
-	@param reviewSummary - TrustYou Review Summary API response
-	*/
-	function renderRecommendedHotel(hotelData, reviewSummary) {
-		// load the HTML template
-		var hotelTemplate = $("#tmpl-recommended-hotel").html();
-		// prepare the data to be passed to the template
-		var templateData = {
-			name: hotelData.name,
-			reviewsCount: reviewSummary["reviews_count"],
-			trustScore: reviewSummary["summary"].score,
-			popularity: reviewSummary["summary"].popularity,
-			hotelTypes: []
-		};
-
-		/*
-		For recommended hotels, we will merely show the first (i.e.
-		primary) hotel type.
-*/
-if (reviewSummary["hotel_type_list"].length > 0) {
-	var hotelType = reviewSummary["hotel_type_list"][0];
-	templateData.hotelTypes = [{
-		categoryId: hotelType["category_id"],
-				/*
-				Texts in the "text" property contain markers
-				in the form of <pos>..</pos>, <neg>..</neg> and
-				<neu>..</neu>, which enclose passages in the
-				text that contain sentiment. Either remove
-				these before displaying the text, or replace
-				them with meaningful markup, as is done here.
-				*/
-				text: hotelType["text"].replace("<pos>", "<strong>").replace("</pos>", "</strong>")
-			}];
-		}
-
-		// render the template, and display the hotel
-		var hotelRendered = Mustache.render(hotelTemplate, templateData);
-		$("#recommendedHotels").append(hotelRendered);
-	}
-
-	/**
 	Render a result list hotel.
 
 	@param hotelData - Data for this hotel from your database, e.g. its name
 	@param reviewSummary - TrustYou Review Summary API response
 	*/
-	function renderHotel(hotelData, reviewSummary) {
+	function renderHotel(hotelData, reviewSummary, hotelType) {
 		// load the HTML template
 		var hotelTemplate = $("#tmpl-hotel").html();
 		// prepare the data to be passed to the template
@@ -133,6 +217,7 @@ if (reviewSummary["hotel_type_list"].length > 0) {
 			name: hotelData.name,
 			reviewsCount: reviewSummary["reviews_count"],
 			trustScore: reviewSummary["summary"].score,
+			scoreDescription: reviewSummary["summary"].score_description,
 			highlights: []
 		};
 
@@ -154,21 +239,40 @@ if (reviewSummary["hotel_type_list"].length > 0) {
 		"Right next to Brandenburg gate".
 		*/
 
-		// Aggregate all categories into one list! Start with top-level categories ...
-		var categories = reviewSummary.category_list;
-		// ... add all of their sub categories ...
-		reviewSummary["category_list"].forEach(function(category) {
-			categories = categories.concat(category["sub_category_list"]);
+		var highlights = [];
+		var categories = [];
+		reviewSummary["hotel_type_list"].forEach(
+			function(hotelTypeInfo) {
+				if (hotelTypeInfo.category_name.toLowerCase().indexOf(hotelType) >= 0) {
+					categories = hotelTypeInfo.sub_category_list;
+					if (hotelTypeInfo.highlight_list.length > 0) {
+						hotelTypeInfo.highlight_list.forEach(function(highlight) {
+							highlights.push(highlight.text);
+						});
+					} else {
+						highlights.push(hotelTypeInfo.short_text);
+					}
+				}
 		});
-		// ... and all good to know categories
-		categories = categories.concat(reviewSummary["good_to_know_list"]);
+		if (highlights.length < 2 && categories.length === 0) {
+			highlights = [];
+			// Aggregate all categories into one list! Start with top-level categories ...
+			categories = reviewSummary.category_list;
+			// ... add all of their sub categories ...
+			reviewSummary["category_list"].forEach(function(category) {
+				categories = categories.concat(category["sub_category_list"]);
+			});
+			// ... and all good to know categories
+			categories = categories.concat(reviewSummary["good_to_know_list"]);
+		}
+
 		// ... and finally sort be relevance
 		var relevantCategories = categories.sort(function(catA, catB) {
 			return catB["relevance"] - catA["relevance"];
 		});
 
 		// from each category, add one highlight
-		var highlights = [], highlight;
+		var highlight;
 		relevantCategories.forEach(function(category) {
 			if (category["highlight_list"].length > 0) {
 				/*
@@ -196,15 +300,20 @@ if (reviewSummary["hotel_type_list"].length > 0) {
 			}
 		});
 		// take the top three highlights
-		templateData.highlights = highlights.slice(0, 3).map(function(highlight) {
-			return {
-				text: highlight
-			};
+		templateData.highlights = highlights.slice(0, 3).map(
+			function(highlight) {
+				return {
+					text: highlight
+				};
 		});
 
 		// render the template, and display the hotel
 		var hotelRendered = Mustache.render(hotelTemplate, templateData);
-		$("#hotels").append(hotelRendered);
+		$("#search-results-" + hotelType).append(hotelRendered);
+	}
+
+	function getRelevantCategories(reviewSummary) {
+		return categories;
 	}
 
 	/**
@@ -227,18 +336,16 @@ if (reviewSummary["hotel_type_list"].length > 0) {
 			request_list we passed earlier, so we can merge the
 			response with our data by their index
 			*/
-			var hotelData = hotels[index];
-			var reviewSummary = response.response;
-			if (index < 2) {
-				/*
-				For illustration purposes, the first two hotels
-				are treated as "featured" hotels, and presented
-				differently.
-				*/
-				renderRecommendedHotel(hotelData, reviewSummary);
-			} else {
-				renderHotel(hotelData, reviewSummary);
+			var hotelType = "all";
+			if (index >= 5) {
+				if (index < 10) hotelType = "business";
+				else if (index < 15) hotelType = "family";
+				else if (index < 20) hotelType = "romantic";
+				else hotelType = "luxury";
 			}
+			var hotelData = hotels[(index / 5) | 0][hotelType][index % 5];
+			var reviewSummary = response.response;
+			renderHotel(hotelData, reviewSummary, hotelType);
 		});
 	}
 
