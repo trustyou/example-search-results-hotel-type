@@ -29,12 +29,12 @@
 			{
 				name: "Das Stue",
 				tyId: "359e1e4b-569a-4f97-aaa1-357f241a851b",
-				image: "img/Das_Stue_Hotel.jpg"
+				image: "img/Das_Stue.jpg"
 			},
 			{
 				name: "Adina Apartment Hotel Berlin Hackescher Markt",
 				tyId: "387d25e2-4321-4b45-a02a-e548a460383a",
-				image: "img/Adina_Apartment_Hotel.jpg"
+				image: "img/Adina_Apartment_Hotel_Berlin_Hackescher_Markt.jpg"
 			},
 			{
 				name: "Regent Berlin",
@@ -216,6 +216,7 @@
 		// prepare the data to be passed to the template
 		var templateData = {
 			name: hotelData.name,
+			image: hotelData.image,
 			reviewsCount: reviewSummary["reviews_count"],
 			trustScore: reviewSummary["summary"].score,
 			scoreDescription: reviewSummary["summary"].score_description,
