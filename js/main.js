@@ -243,8 +243,6 @@
 		var highlights = [];
 		var hotelTypeCategories = [];
 		// first, we add hotel type specific highlights and categories
-		console.log(hotelData);
-		console.log(reviewSummary);
 		reviewSummary["hotel_type_list"].forEach(
 			function(hotelTypeInfo) {
 				if (hotelTypeInfo.category_name.toLowerCase().indexOf(hotelType) >= 0) {
@@ -275,7 +273,6 @@
 					} 
 				}
 		});
-		console.log(hotelTypeCategories);
 
 		// we only want to show 3 highlights in total - of course you can show more
 		var categories = [];
@@ -307,11 +304,7 @@
 
 		// from each category, add one highlight
 		var highlight;
-		if (templateData.name === "Michelberger Hotel") console.log(reviewSummary);
-		if (templateData.name === "Michelberger Hotel") console.log(highlights);
-		if (templateData.name === "Michelberger Hotel") console.log(relevantCategories);
 		relevantCategories.forEach(function(category) {
-			if (templateData.name === "Michelberger Hotel") console.log(category);
 			if (category["highlight_list"].length > 0) {
 				/*
 				If there are highlights for this category, pick
