@@ -10,10 +10,7 @@
 
 	While we have used a custom ranking function for selecting the hotels,
 	it is of course possible to build such a function yourself solely based on
-	the data we provide. An easy implementation would.
-	
-	Of course, much more sophisticated ranking procedures are possible
-	(and probably preferrable).
+	the data we provide.
 	*/
 
 	// we need to preserve order for processing in a later step, hence the array
@@ -43,22 +40,18 @@
 				name: "Regent Berlin",
 				tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb",
 				image: "img/Regent_Berlin.jpg"
-			}]},
+			}
+		]},
 		{"business": [
 			{
-				name: "Airporthotel Berlin Adlerhof",
-				tyId: "65737854-432f-4b06-a002-7cff191e074a",
-				image: "img/Airporthotel_Berlin_Adlerhof.jpg"
+				name: "H10 Berlin Ku'damm",
+				tyId: "9651726f-855f-4420-8b3a-3de1e0ccea48",
+				image: "img/H10_Berlin_Kudamm.jpg"
 			},
 			{
-				name: "The Mandala Hotel",
-				tyId: "a6d7ac66-51ca-46b4-9a74-57324a2977b4",
-				image: "img/The_Mandala_Hotel.jpg"
-			},
-			{
-				name: "Ibis Berlin Messe",
-				tyId: "861fe349-686f-4d55-9e6d-d1d9cfcec319",
-				image: "img/Ibis_Berlin_Messe.jpg"
+				name: "Hotel Adelante",
+				tyId: "85f03408-2feb-4371-adbe-07d6c1db250b",
+				image: "img/Hotel_Adelante.jpg"
 			},
 			{
 				name: "Motel One Berlin-Spittelmarkt",
@@ -66,10 +59,15 @@
 				image: "img/Motel_One_Berlin-Spittelmarkt.jpg"
 			},
 			{
-				name: "Grand Hotel Esplanade Berlin",
-				tyId: "179a2c7e-f2eb-47f6-8a13-f80738656006",
-				image: "img/Grand_Hotel_Esplanade_Berlin.jpg"
-			}
+				name: "The Circus Hotel",
+				tyId: "383ad18c-b1a0-4076-92e6-7f432c0fa8fa",
+				image: "img/The_Circus_Hotel.jpg"
+			},
+			{
+				name: "Hotel de Rome",
+				tyId: "652088f5-fcfa-4e46-b44f-85200355acfa",
+				image: "img/Hotel_de_Rome.jpg"
+			},
 		]},
 		{"family": [
 			{
@@ -96,33 +94,35 @@
 				name: "Suite Novotel Ber Potsdamer Pl",
 				tyId: "b631adf6-92e3-437d-99e4-f96dce092b31",
 				image: "img/Suite_Novotel_Ber_Potsdamer_Pl.jpg"
-			}]},
+			}
+		]},
 		{"romantic": [
 			{
-				name: "Meliá Hotel Berlin",
-				tyId: "1a2c0327-6830-430d-bde9-5b446dbb2734",
-				image: "img/Melia_Hotel_Berlin.jpg"
+				name: "Casa Camper Berlin",
+				tyId: "83d3c9ee-1709-497d-a1e3-a83243e9aae4",
+				image: "img/Casa_Camper_Berlin.jpg"
 			},
 			{
-				name: "Hotel Palace Berlin",
-				tyId: "6dc50053-4f47-407b-866c-0be5595c4b63",
-				image: "img/Hotel_Palace_Berlin.jpg"
+				name: "Michelberger Hotel",
+				tyId: "68717314-3769-4e9a-84aa-1915c42d5889",
+				image: "img/Michelberger_Hotel.jpg"
 			},
 			{
-				name: "Radisson BLU Hotel",
-				tyId: "4d3137f4-cdec-4050-9026-fcfe453e30a7",
-				image: "img/Radisson_BLU_Hotel.jpg"
+				name: "The Circus Hotel",
+				tyId: "383ad18c-b1a0-4076-92e6-7f432c0fa8fa",
+				image: "img/The_Circus_Hotel.jpg"
+			},
+			{
+				name: "Regent Berlin",
+				tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb",
+				image: "img/Regent_Berlin.jpg"
 			},
 			{
 				name: "Adina Apartment Hotel Berlin Checkpoint Charlie",
 				tyId: "72ed40a4-1680-42be-b94c-626c13de1ea7",
 				image: "img/Adina_Apartment_Hotel_Berlin_Checkpoint_Charlie.jpg"
 			},
-			{
-				name: "Michelberger Hotel",
-				tyId: "68717314-3769-4e9a-84aa-1915c42d5889",
-				image: "img/Michelberger_Hotel.jpg"
-			}]},
+		]},
 		{"luxury": [
 			{
 				name: "Hotel Adlon Kempinski",
@@ -130,25 +130,26 @@
 				image: "img/Hotel_Adlon_Kempinski.jpg"
 			},
 			{
-				name: "Adina Apartment Hotel Berlin Hackescher Markt",
-				tyId: "387d25e2-4321-4b45-a02a-e548a460383a",
-				image: "img/Adina_Apartment_Hotel_Berlin_Hackescher_Markt.jpg"
+				name: "Hotel de Rome",
+				tyId: "652088f5-fcfa-4e46-b44f-85200355acfa",
+				image: "img/Hotel_de_Rome.jpg"
 			},
 			{
-				name: "Adina Apartment Hotel Berlin Checkpoint Charlie",
-				tyId: "72ed40a4-1680-42be-b94c-626c13de1ea7",
-				image: "img/Adina_Apartment_Hotel_Berlin_Checkpoint_Charlie.jpg"
+				name: "Radisson BLU Hotel",
+				tyId: "4d3137f4-cdec-4050-9026-fcfe453e30a7",
+				image: "img/Radisson_BLU_Hotel.jpg"
+			},
+			{
+				name: "The Mandala Hotel",
+				tyId: "a6d7ac66-51ca-46b4-9a74-57324a2977b4",
+				image: "img/The_Mandala_Hotel.jpg"
 			},
 			{
 				name: "H10 Berlin Ku'damm",
 				tyId: "9651726f-855f-4420-8b3a-3de1e0ccea48",
 				image: "img/H10_Berlin_Kudamm.jpg"
-			},
-			{
-				name: "Hotel de Rome",
-				tyId: "652088f5-fcfa-4e46-b44f-85200355acfa",
-				image: "img/Hotel_de_Rome.jpg"
-			}]},
+			}
+		]},
 	];
 
 	/*
@@ -228,34 +229,54 @@
 		room a lot, and it is repetitive to see "great location"
 		several times.
 
-		Instead, we will use the "relevance" property, which is
-		provided by TrustYou to find categories which set a hotel apart
-		from other comparable hotels.
+		Instead, we will make use of hotel type specific categories as well as
+		the "relevance" property, which is provided by TrustYou to find
+		categories which set a hotel apart from other comparable hotels.
 
 		Additionally, instead of a generic category name like "Great
 		Location", we will use content from the "highlight_list"
 		property. Highlights are quotes from actual customer reviews,
 		which are much more unique and specific to the hotel, e.g.
-		"Right next to Brandenburg gate".
+		"Right next to Brandenburg Gate".
 		*/
 
 		var highlights = [];
-		var categories = [];
+		var hotelTypeCategories = [];
+		// first, we add hotel type specific highlights and categories
 		reviewSummary["hotel_type_list"].forEach(
 			function(hotelTypeInfo) {
 				if (hotelTypeInfo.category_name.toLowerCase().indexOf(hotelType) >= 0) {
+					/*
+					Every identified hotel type for a particular hotel has
+					adequate categories attached. We make use of them here.
+					*/
 					categories = hotelTypeInfo.sub_category_list;
 					if (hotelTypeInfo.highlight_list.length > 0) {
+						// add highlights related to hotel type
 						hotelTypeInfo.highlight_list.forEach(function(highlight) {
 							highlights.push(highlight.text);
 						});
-					} else {
-						highlights.push(hotelTypeInfo.short_text);
-					}
+						/*
+						Notice that we don't make use of the short text
+						property here. This is because we have so many other
+						sources for getting valuable highlights which are 
+						preferred to the short text properties which can become
+						repetitive for our use case.
+						*/
+					} 
 				}
 		});
-		if (highlights.length < 2 && categories.length === 0) {
-			highlights = [];
+
+		// we only want to show 3 highlights in total - of course you can show more
+		var categories = [];
+		if (highlights.length + hotelTypeCategories.length < 3) {
+			/*
+			If the hotel type highlights and hotel type subcategory highlights
+			together are less than 3, we will fill the remaining spots with
+			highlights from our general category list of that hotel, sorted
+			by relevance.
+			*/
+
 			// Aggregate all categories into one list! Start with top-level categories ...
 			categories = reviewSummary.category_list;
 			// ... add all of their sub categories ...
@@ -266,37 +287,34 @@
 			categories = categories.concat(reviewSummary["good_to_know_list"]);
 		}
 
-		// ... and finally sort be relevance
-		var relevantCategories = categories.sort(function(catA, catB) {
-			return catB["relevance"] - catA["relevance"];
-		});
+		// Finally sort by our combined category list by relevance
+		var relevantCategories = hotelTypeCategories.concat(
+			categories.sort(function(catA, catB) {
+				return catB["relevance"] - catA["relevance"];
+			})
+		);
 
 		// from each category, add one highlight
 		var highlight;
+		if (templateData.name === "Michelberger Hotel") console.log(reviewSummary);
+		if (templateData.name === "Michelberger Hotel") console.log(highlights);
+		if (templateData.name === "Michelberger Hotel") console.log(relevantCategories);
 		relevantCategories.forEach(function(category) {
+			if (templateData.name === "Michelberger Hotel") console.log(category);
 			if (category["highlight_list"].length > 0) {
 				/*
 				If there are highlights for this category, pick
 				the first one.
 				*/
 				highlight = category["highlight_list"][0]["text"];
-			} else {
 				/*
-				It is possible that no highlights are returned
-				for some categories and rare languages, e.g.
-				Thai. For such cases, we recommend to use the
-				"short_text" property, which is guaranteed to
-				be present for all categories and languages.
-				*/
-				highlight = category["short_text"];
-			}
-			/*
-			Note that highlights can repeat in different
-			categories, so we have to check if the text is present
-			already before adding.
-			*/
-			if (highlights.indexOf(highlight) === -1) {
-				highlights.push(highlight);
+				   Note that highlights can repeat in different
+				   categories, so we have to check if the text is present
+				   already before adding.
+				   */
+				if (highlights.indexOf(highlight) === -1) {
+					highlights.push(highlight);
+				}
 			}
 		});
 		// take the top three highlights
