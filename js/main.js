@@ -40,33 +40,33 @@
 				name: "Regent Berlin",
 				tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb",
 				image: "img/Regent_Berlin.jpg"
-			}
+			},
 		]},
 		{"business": [
 			{
-				name: "H10 Berlin Ku'damm",
-				tyId: "9651726f-855f-4420-8b3a-3de1e0ccea48",
-				image: "img/H10_Berlin_Kudamm.jpg"
+				name: "Motel One Berlin Hauptbahnhof",
+				tyId: "c1f0a26b-0709-4bfa-b7fa-ef56327e1469",
+				image: "img/Motel_One_Berlin_Hauptbahnhof.jpg"
 			},
 			{
-				name: "Hotel Adelante",
-				tyId: "85f03408-2feb-4371-adbe-07d6c1db250b",
-				image: "img/Hotel_Adelante.jpg"
+				name: "Scandic Hotel Berlin Potsdamer Platz",
+				tyId: "38476f88-fd4c-476f-a0f0-b84ebd63f72b",
+				image: "img/Scandic_Hotel_Berlin_Potsdamer_Platz.jpg"
 			},
 			{
-				name: "Motel One Berlin-Spittelmarkt",
-				tyId: "759630e9-5a8a-4e62-963b-83d5b03d4e43",
-				image: "img/Motel_One_Berlin-Spittelmarkt.jpg"
+				name: "Seminaris Campus Hotel",
+				tyId: "6fa82f2a-8d41-411e-b512-9978c0d52ad2",
+				image: "img/Seminaris_Campus_Hotel.jpg"
 			},
 			{
-				name: "The Circus Hotel",
-				tyId: "383ad18c-b1a0-4076-92e6-7f432c0fa8fa",
-				image: "img/The_Circus_Hotel.jpg"
+				name: "Casa Camper Berlin",
+				tyId: "83d3c9ee-1709-497d-a1e3-a83243e9aae4",
+				image: "img/Casa_Camper_Berlin.jpg"
 			},
 			{
-				name: "Hotel de Rome",
-				tyId: "652088f5-fcfa-4e46-b44f-85200355acfa",
-				image: "img/Hotel_de_Rome.jpg"
+				name: "Regent Berlin",
+				tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb",
+				image: "img/Regent_Berlin.jpg"
 			},
 		]},
 		{"family": [
@@ -243,14 +243,23 @@
 		var highlights = [];
 		var hotelTypeCategories = [];
 		// first, we add hotel type specific highlights and categories
+		console.log(hotelData);
+		console.log(reviewSummary);
 		reviewSummary["hotel_type_list"].forEach(
 			function(hotelTypeInfo) {
 				if (hotelTypeInfo.category_name.toLowerCase().indexOf(hotelType) >= 0) {
 					/*
 					Every identified hotel type for a particular hotel has
-					adequate categories attached. We make use of them here.
+					adequate categories attached. We make use of them here
+					by adding all those with highlights to a list.
 					*/
-					categories = hotelTypeInfo.sub_category_list;
+					hotelTypeInfo.sub_category_list.forEach(
+						function(subCategory) {
+							if (subCategory.highlight_list.length > 0) {
+								hotelTypeCategories.push(subCategory);
+							}
+					});
+
 					if (hotelTypeInfo.highlight_list.length > 0) {
 						// add highlights related to hotel type
 						hotelTypeInfo.highlight_list.forEach(function(highlight) {
@@ -266,6 +275,7 @@
 					} 
 				}
 		});
+		console.log(hotelTypeCategories);
 
 		// we only want to show 3 highlights in total - of course you can show more
 		var categories = [];
@@ -287,7 +297,8 @@
 			categories = categories.concat(reviewSummary["good_to_know_list"]);
 		}
 
-		// Finally sort by our combined category list by relevance
+		// Finally sort our combined category list by relevance while giving
+		// preference to the hotelTypeCategories
 		var relevantCategories = hotelTypeCategories.concat(
 			categories.sort(function(catA, catB) {
 				return catB["relevance"] - catA["relevance"];
