@@ -1,4 +1,18 @@
-example-search-results-hotel-type
-=================================
+Search results with filters
+===========================
 
-Example of filtering hotels in a search result page for business, family etc. trips using TrustYou data.
+Example of a search results page listing hotels with integrated TrustYou data:
+- TrustScore seal with review counter
+- traveler type recommendations
+- rank
+- review snippets
+
+
+In addition to this we have also added a toolbar for filtering the search results by hotel type:
+- business
+- family
+- romantic
+- luxury
+
+
+![alt tag](img/preview.jpg)
