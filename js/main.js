@@ -98,14 +98,14 @@
 		]},
 		{"romantic": [
 			{
-				name: "Casa Camper Berlin",
-				tyId: "83d3c9ee-1709-497d-a1e3-a83243e9aae4",
-				image: "img/Casa_Camper_Berlin.jpg"
-			},
-			{
 				name: "Michelberger Hotel",
 				tyId: "68717314-3769-4e9a-84aa-1915c42d5889",
 				image: "img/Michelberger_Hotel.jpg"
+			},
+			{
+				name: "Hotel Q! Berlin",
+				tyId: "dbe1182c-ea71-4717-b74a-4ff31880dfe0",
+				image: "img/Hotel_Q_Berlin.jpg"
 			},
 			{
 				name: "The Circus Hotel",
@@ -113,42 +113,42 @@
 				image: "img/The_Circus_Hotel.jpg"
 			},
 			{
-				name: "Regent Berlin",
-				tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb",
-				image: "img/Regent_Berlin.jpg"
+				name: "Radisson BLU Hotel",
+				tyId: "4d3137f4-cdec-4050-9026-fcfe453e30a7",
+				image: "img/Radisson_BLU_Hotel.jpg"
 			},
 			{
-				name: "Adina Apartment Hotel Berlin Checkpoint Charlie",
-				tyId: "72ed40a4-1680-42be-b94c-626c13de1ea7",
-				image: "img/Adina_Apartment_Hotel_Berlin_Checkpoint_Charlie.jpg"
+				name: "Hotel Gat Point Charlie",
+				tyId: "7b776301-7185-436a-abf6-297e90103712",
+				image: "img/Hotel_Gat_Point_Charlie.jpg"
 			},
 		]},
 		{"luxury": [
+			{
+				name: "Das Stue",
+				tyId: "359e1e4b-569a-4f97-aaa1-357f241a851b",
+				image: "img/Das_Stue.jpg"
+			},
 			{
 				name: "Hotel Adlon Kempinski",
 				tyId: "60fd56b6-8f61-4672-a1d3-d76ec6bcf540",
 				image: "img/Hotel_Adlon_Kempinski.jpg"
 			},
 			{
-				name: "Hotel de Rome",
-				tyId: "652088f5-fcfa-4e46-b44f-85200355acfa",
-				image: "img/Hotel_de_Rome.jpg"
+				name: "Schlosshotel im Grunewald",
+				tyId: "958c0035-8119-4eb6-81c6-1f72dc1090d7",
+				image: "img/Schlosshotel_im_Grunewald.jpg"
 			},
 			{
-				name: "Radisson BLU Hotel",
-				tyId: "4d3137f4-cdec-4050-9026-fcfe453e30a7",
-				image: "img/Radisson_BLU_Hotel.jpg"
+				name: "Waldorf Astoria Berlin",
+				tyId: "7c9618cb-012c-4c3c-a0f1-e9a9eb2c1341",
+				image: "img/Waldorf_Astoria_Berlin.jpg"
 			},
 			{
-				name: "The Mandala Hotel",
-				tyId: "a6d7ac66-51ca-46b4-9a74-57324a2977b4",
-				image: "img/The_Mandala_Hotel.jpg"
+				name: "InterContinental Berlin",
+				tyId: "4bed91db-3376-45ea-bcf2-45fc8ff89547",
+				image: "img/InterContinental_Berlin.jpg"
 			},
-			{
-				name: "H10 Berlin Ku'damm",
-				tyId: "9651726f-855f-4420-8b3a-3de1e0ccea48",
-				image: "img/H10_Berlin_Kudamm.jpg"
-			}
 		]},
 	];
 
