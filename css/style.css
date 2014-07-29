@@ -203,6 +203,15 @@ a.verified-reviews:after {
 	height: 15px;
 }
 
+/* Popularity */
+
+.search-results .popularity {
+	color: rgb(104, 156, 212);
+	float: left;
+	font-weight: bold;
+	margin: -2px 10px 0 0;
+}
+
 /* Stars */
 
 .search-results .hotel .stars{
