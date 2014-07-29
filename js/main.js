@@ -8,13 +8,17 @@
 
 	The picked hotels represent the best hotels in Berlin, categorized by type.
 
-	While we have used a custom ranking function for selecting the hotels,
-	it is of course possible to build such a function yourself solely based on
-	the data we provide.
+	We have a sophisticated process in place which ranks hotels per city.
+	The outcome of the ranking is reflected in the "popularity" score of each
+	entry of the "hotel_type_list" object. Hence, with our data it is really
+	easy to grab that ranking information and present a ranking for hotel types
+	per city on a web page.
 	*/
 
 	// we need to preserve order for processing in a later step, hence the array
 	var hotels = [
+		// top 5 hotels in Berlin per hotel type based on our ranking
+		// "all" simply means ranked by TrustScore
 		{"all": [
 			{
 				name: "Hotel Adlon Kempinski",
@@ -44,105 +48,24 @@
 		]},
 		{"business": [
 			{
-				name: "Motel One Berlin Hauptbahnhof",
-				tyId: "c1f0a26b-0709-4bfa-b7fa-ef56327e1469",
-				image: "img/Motel_One_Berlin_Hauptbahnhof.jpg"
+				name: "Hilton Berlin Hotel",
+				tyId: "a2b0b03e-3006-4fe9-a898-708a353a477d",
+				image: "img/Hilton_Berlin_Hotel.jpg"
 			},
 			{
-				name: "Scandic Hotel Berlin Potsdamer Platz",
-				tyId: "38476f88-fd4c-476f-a0f0-b84ebd63f72b",
-				image: "img/Scandic_Hotel_Berlin_Potsdamer_Platz.jpg"
+				name: "Adina Apartment Hotel Berlin Checkpoint Charlie",
+				tyId: "72ed40a4-1680-42be-b94c-626c13de1ea7",
+				image: "img/Adina_Apartment_Hotel_Berlin.jpg"
 			},
 			{
-				name: "Seminaris Campus Hotel",
-				tyId: "6fa82f2a-8d41-411e-b512-9978c0d52ad2",
-				image: "img/Seminaris_Campus_Hotel.jpg"
+				name: "Lindner Hotel Am Ku'damm Berlin",
+				tyId: "f20807ae-9917-4eb8-8038-42093398d2fa",
+				image: "img/Lindner_Hotel_Am_Ku'damm_Berlin.jpg"
 			},
 			{
-				name: "Casa Camper Berlin",
-				tyId: "83d3c9ee-1709-497d-a1e3-a83243e9aae4",
-				image: "img/Casa_Camper_Berlin.jpg"
-			},
-			{
-				name: "Regent Berlin",
-				tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb",
-				image: "img/Regent_Berlin.jpg"
-			},
-		]},
-		{"family": [
-			{
-				name: "Mitte Inn Berlin",
-				tyId: "84efccf5-c165-4e66-a554-bdb0e08c808d",
-				image: "img/Mitte_Inn_Berlin.jpg"
-			},
-			{
-				name: "Akzent Hotel am Forum Steglitz",
-				tyId: "1c9f79c1-3f1f-4f94-9efb-a132dccb0d4d",
-				image: "img/Akzent_Hotel_am_Forum_Steglitz.jpg"
-			},
-			{
-				name: "Louisa's Place",
-				tyId: "51fa5415-45d4-4bff-a104-e2098931ccdd",
-				image: "img/Louisas_Place.jpg"
-			},
-			{
-				name: "Citylight Hotel",
-				tyId: "a0cded15-9aaa-49bc-855d-52ffbc169105",
-				image: "img/Citylight_Hotel.jpg"
-			},
-			{
-				name: "Suite Novotel Ber Potsdamer Pl",
-				tyId: "b631adf6-92e3-437d-99e4-f96dce092b31",
-				image: "img/Suite_Novotel_Ber_Potsdamer_Pl.jpg"
-			}
-		]},
-		{"romantic": [
-			{
-				name: "Michelberger Hotel",
-				tyId: "68717314-3769-4e9a-84aa-1915c42d5889",
-				image: "img/Michelberger_Hotel.jpg"
-			},
-			{
-				name: "Hotel Q! Berlin",
-				tyId: "dbe1182c-ea71-4717-b74a-4ff31880dfe0",
-				image: "img/Hotel_Q_Berlin.jpg"
-			},
-			{
-				name: "The Circus Hotel",
-				tyId: "383ad18c-b1a0-4076-92e6-7f432c0fa8fa",
-				image: "img/The_Circus_Hotel.jpg"
-			},
-			{
-				name: "Radisson BLU Hotel",
-				tyId: "4d3137f4-cdec-4050-9026-fcfe453e30a7",
-				image: "img/Radisson_BLU_Hotel.jpg"
-			},
-			{
-				name: "Hotel Gat Point Charlie",
-				tyId: "7b776301-7185-436a-abf6-297e90103712",
-				image: "img/Hotel_Gat_Point_Charlie.jpg"
-			},
-		]},
-		{"luxury": [
-			{
-				name: "Das Stue",
-				tyId: "359e1e4b-569a-4f97-aaa1-357f241a851b",
-				image: "img/Das_Stue.jpg"
-			},
-			{
-				name: "Hotel Adlon Kempinski",
-				tyId: "60fd56b6-8f61-4672-a1d3-d76ec6bcf540",
-				image: "img/Hotel_Adlon_Kempinski.jpg"
-			},
-			{
-				name: "Schlosshotel im Grunewald",
-				tyId: "958c0035-8119-4eb6-81c6-1f72dc1090d7",
-				image: "img/Schlosshotel_im_Grunewald.jpg"
-			},
-			{
-				name: "Waldorf Astoria Berlin",
-				tyId: "7c9618cb-012c-4c3c-a0f1-e9a9eb2c1341",
-				image: "img/Waldorf_Astoria_Berlin.jpg"
+				name: "Swissotel Berlin",
+				tyId: "f220cddb-4602-4d29-b29d-bcb69a24285d",
+				image: "img/Swissotel_Berlin.jpg"
 			},
 			{
 				name: "InterContinental Berlin",
@@ -150,7 +73,96 @@
 				image: "img/InterContinental_Berlin.jpg"
 			},
 		]},
+		{"family": [
+			{
+				name: "Adina Apartment Hotel Berlin Checkpoint Charlie",
+				tyId: "72ed40a4-1680-42be-b94c-626c13de1ea7",
+				image: "img/Adina_Apartment_Hotel_Berlin.jpg"
+			},
+			{
+				name: "Novotel Berlin Mitte",
+				tyId: "39b707ea-9d26-46d6-91e3-f1e12eb95aa7",
+				image: "img/Novotel_Berlin_Mitte.jpg"
+			},
+			{
+				name: "Novotel Berlin Tiergarten",
+				tyId: "4176a0ad-4f67-489c-b6e8-270f7c98aec2",
+				image: "img/Novotel_Berlin_Tiergarten.jpg"
+			},
+			{
+				name: "Louisa's Place",
+				tyId: "51fa5415-45d4-4bff-a104-e2098931ccdd",
+				image: "img/Louisa's_Place.jpg"
+			},
+			{
+				name: "Victor's Residenz Hotel Berlin",
+				tyId: "0efdb987-7eb7-4b08-b6e3-0a521bc2bfec",
+				image: "img/Victor's_Residenz_Hotel_Berlin.jpg"
+			}
+		]},
+		{"romantic": [
+			{
+				name: "Hilton Berlin Hotel",
+				tyId: "a2b0b03e-3006-4fe9-a898-708a353a477d",
+				image: "img/Hilton_Berlin_Hotel.jpg"
+			},
+			{
+				name: "Radisson BLU Hotel",
+				tyId: "4d3137f4-cdec-4050-9026-fcfe453e30a7",
+				image: "img/Radisson_BLU_Hotel.jpg"
+			},
+			{
+				name: "Regent Berlin",
+				tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb",
+				image: "img/Regent_Berlin.jpg"
+			},
+			{
+				name: "Hotel Adlon Kempinski",
+				tyId: "60fd56b6-8f61-4672-a1d3-d76ec6bcf540",
+				image: "img/Hotel_Adlon_Kempinski.jpg"
+			},
+			{
+				name: "Pullman Berlin Schweizerhof",
+				tyId: "ae6db065-86a4-4d27-9d59-fcfe9e14c9c7",
+				image: "img/Pullman_Berlin_Schweizerhof.jpg"
+			},
+		]},
+		{"luxury": [
+			{
+				name: "Regent Berlin",
+				tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb",
+				image: "img/Regent_Berlin.jpg"
+			},
+			{
+				name: "Hotel de Rome",
+				tyId: "652088f5-fcfa-4e46-b44f-85200355acfa",
+				image: "img/Hotel_de_Rome.jpg"
+			},
+			{
+				name: "Hotel Adlon Kempinski",
+				tyId: "60fd56b6-8f61-4672-a1d3-d76ec6bcf540",
+				image: "img/Hotel_Adlon_Kempinski.jpg"
+			},
+			{
+				name: "Hilton Berlin Hotel",
+				tyId: "a2b0b03e-3006-4fe9-a898-708a353a477d",
+				image: "img/Hilton_Berlin_Hotel.jpg"
+			},
+			{
+				name: "Grand Hyatt Berlin",
+				tyId: "05620b88-073f-4d1e-abb5-1577133f8a99",
+				image: "img/Grand_Hyatt_Berlin.jpg"
+			},
+		]},
 	];
+
+	// mapping to the hotel type keys
+	var htypeMapping = {
+		business: "16h",
+		family: "16c",
+		romantic: "16d",
+		luxury: "16b"
+	};
 
 	/*
 	Prepare the request to the TrustYou API. We will make use of the Bulk
@@ -179,8 +191,8 @@
 		data: {
 			request_list: requestList,
 			/*
-			This is a demo API key, do not reuse it! Contact
-			TrustYou to receive your own.
+			This is a demo API key, do not reuse it!
+			Contact TrustYou to receive your own.
 			*/
 			key: "a06294d3-4d58-45c8-97a1-5c905922e03a"
 		},
@@ -195,7 +207,6 @@
 		bulkRequest.done(processApiResponse);
 
 		// if a new filter is selected, activate it and deactivate others
-
 		$('.tile > a').on('click', function(event) {
 			if(!$(this).parent().hasClass('selected')) {
 				$('.tile').removeClass('selected');
@@ -214,12 +225,26 @@
 		// load the HTML template
 		var hotelTemplate = $("#tmpl-hotel").html();
 		// prepare the data to be passed to the template
+		var popularity;
+		if (hotelType === "all") {
+			popularity = [];
+		} else {
+			for (var i = 0; i < reviewSummary.hotel_type_list.length; i++) {
+				var hotelTypeInfo = reviewSummary.hotel_type_list[i];
+				if (hotelTypeInfo.category_id === htypeMapping[hotelType]) {
+					popularity = [hotelTypeInfo.popularity];
+					break;
+			}
+		}
+			
+		}
 		var templateData = {
 			name: hotelData.name,
 			image: hotelData.image,
-			reviewsCount: reviewSummary["reviews_count"],
-			trustScore: reviewSummary["summary"].score,
-			scoreDescription: reviewSummary["summary"].score_description,
+			reviewsCount: reviewSummary.reviews_count,
+			trustScore: reviewSummary.summary.score,
+			scoreDescription: reviewSummary.summary.score_description,
+			popularity: popularity,
 			highlights: []
 		};
 
@@ -246,7 +271,7 @@
 		// first, we add hotel type specific highlights and categories
 		reviewSummary["hotel_type_list"].forEach(
 			function(hotelTypeInfo) {
-				if (hotelTypeInfo.category_name.toLowerCase().indexOf(hotelType) >= 0) {
+				if (hotelTypeInfo.category_id === htypeMapping[hotelType]) {
 					/*
 					Every identified hotel type for a particular hotel has
 					adequate categories attached. We make use of them here
@@ -269,7 +294,7 @@
 						property here. This is because we have so many other
 						sources for getting valuable highlights which are 
 						preferred to the short text properties which can become
-						repetitive for our use case.
+						repetitive in our use case.
 						*/
 					} 
 				}
@@ -339,6 +364,27 @@
 		return categories;
 	}
 
+	function getHotelType(index) {
+		var hotelType = "all";
+		if (index >= 5) {
+			if (index < 10) hotelType = "business";
+			else if (index < 15) hotelType = "family";
+			else if (index < 20) hotelType = "romantic";
+			else hotelType = "luxury";
+		}
+		return hotelType;
+	}
+
+	function getPopularity(slice, hotelType) {
+		for (var i = 0; i < slice[1].response.hotel_type_list.length; i++) {
+			var hotelTypeInfo = slice[1].response.hotel_type_list[i];
+			if (hotelTypeInfo.category_id === htypeMapping[hotelType]) {
+				return hotelTypeInfo.popularity;
+			}
+		}
+		throw "HotelType " + hotelType + " not found for hotel: " + slice[1];
+	}
+
 	/**
 	Process a response from the TrustYou Bulk API.
 	*/
@@ -349,26 +395,45 @@
 		}
 		// go through all responses, and render each hotel
 		var responses = data.response.response_list;
+		var responsesSorted = [];
+		var chunk = hotels[0].all.length;
+		var currentSlices = [];
+		/*
+		Results are guaranteed to be in the same order as the
+		request_list we passed earlier. Therefore, we can merge the
+		response with our data by their index.
+		*/
 		responses.forEach(function(response, index) {
 			// check whether the individual request was successful
 			if (response.meta.code !== 200) {
 				throw "Request failed!";
 			}
 			/*
-			Results are guaranteed to be in the same order as the
-			request_list we passed earlier, so we can merge the
-			response with our data by their index
+			We also need to sort them by popularity (of hotel type) as they
+			might not be in the correct order and the rank of a hotel can
+			change over time because of new reviews.
 			*/
-			var hotelType = "all";
-			if (index >= 5) {
-				if (index < 10) hotelType = "business";
-				else if (index < 15) hotelType = "family";
-				else if (index < 20) hotelType = "romantic";
-				else hotelType = "luxury";
+			currentSlices.push([index, response]);
+			if ((index + 1) % 5 === 0) {
+				var hotelType = getHotelType(index);
+				currentSlices.sort(function(a, b) {
+					if (hotelType === "all") {
+						return -(a[1].response.summary.score - b[1].response.summary.score);
+					} else {
+						var aPopularity = getPopularity(a, hotelType);
+						var bPopularity = getPopularity(b, hotelType);
+						return aPopularity - bPopularity;
+					}
+				});
+				currentSlices.forEach(function(slice) {
+					var hotelIndex = slice[0];
+					var hotelResponse = slice[1];
+					var hotelData = hotels[(hotelIndex / 5) | 0][hotelType][hotelIndex % 5];
+					var reviewSummary = hotelResponse.response;
+					renderHotel(hotelData, reviewSummary, hotelType);
+				});
+				currentSlices = [];
 			}
-			var hotelData = hotels[(index / 5) | 0][hotelType][index % 5];
-			var reviewSummary = response.response;
-			renderHotel(hotelData, reviewSummary, hotelType);
 		});
 	}
 
