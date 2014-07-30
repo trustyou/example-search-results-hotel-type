@@ -8,7 +8,7 @@
 
 	The picked hotels represent the best hotels in Berlin, categorized by type.
 
-	We have a sophisticated process in place which ranks hotels per city.
+	We have a sophisticated algorithm in place which ranks hotels per city.
 	The outcome of the ranking is reflected in the "popularity" score of each
 	entry of the "hotel_type_list" object. Hence, with our data it is really
 	easy to grab that ranking information and present a ranking for hotel types
@@ -17,7 +17,7 @@
 
 	// we need to preserve order for processing in a later step, hence the array
 	var hotels = [
-		// top 5 hotels in Berlin per hotel type based on our ranking
+		// 5 high ranking hotels in Berlin per hotel type based on our ranking.
 		// "all" simply means ranked by TrustScore
 		{"all": [
 			{
@@ -157,6 +157,7 @@
 	];
 
 	// mapping to the hotel type keys
+	// use those as they won't change in the future
 	var htypeMapping = {
 		business: "16h",
 		family: "16c",
@@ -220,6 +221,7 @@
 
 	@param hotelData - Data for this hotel from your database, e.g. its name
 	@param reviewSummary - TrustYou Review Summary API response
+	@param hotelType - The hotel type of the specific hotel we are looking at
 	*/
 	function renderHotel(hotelData, reviewSummary, hotelType) {
 		// load the HTML template
@@ -229,6 +231,7 @@
 		if (hotelType === "all") {
 			popularity = [];
 		} else {
+			// the hotel can have more hotel types assigned to it
 			for (var i = 0; i < reviewSummary.hotel_type_list.length; i++) {
 				var hotelTypeInfo = reviewSummary.hotel_type_list[i];
 				if (hotelTypeInfo.category_id === htypeMapping[hotelType]) {
@@ -269,7 +272,7 @@
 		var highlights = [];
 		var hotelTypeCategories = [];
 		// first, we add hotel type specific highlights and categories
-		reviewSummary["hotel_type_list"].forEach(
+		reviewSummary.hotel_type_list.forEach(
 			function(hotelTypeInfo) {
 				if (hotelTypeInfo.category_id === htypeMapping[hotelType]) {
 					/*
@@ -313,30 +316,30 @@
 			// Aggregate all categories into one list! Start with top-level categories ...
 			categories = reviewSummary.category_list;
 			// ... add all of their sub categories ...
-			reviewSummary["category_list"].forEach(function(category) {
-				categories = categories.concat(category["sub_category_list"]);
+			reviewSummary.category_list.forEach(function(category) {
+				categories = categories.concat(category.sub_category_list);
 			});
 			// ... and all good to know categories
-			categories = categories.concat(reviewSummary["good_to_know_list"]);
+			categories = categories.concat(reviewSummary.good_to_know_list);
 		}
 
 		// Finally sort our combined category list by relevance while giving
 		// preference to the hotelTypeCategories
 		var relevantCategories = hotelTypeCategories.concat(
 			categories.sort(function(catA, catB) {
-				return catB["relevance"] - catA["relevance"];
+				return catB.relevance - catA.relevance;
 			})
 		);
 
 		// from each category, add one highlight
 		var highlight;
 		relevantCategories.forEach(function(category) {
-			if (category["highlight_list"].length > 0) {
+			if (category.highlight_list.length > 0) {
 				/*
 				If there are highlights for this category, pick
 				the first one.
 				*/
-				highlight = category["highlight_list"][0]["text"];
+				highlight = category.highlight_list[0].text;
 				/*
 				   Note that highlights can repeat in different
 				   categories, so we have to check if the text is present
@@ -382,6 +385,7 @@
 				return hotelTypeInfo.popularity;
 			}
 		}
+		// if we can't find the expected hotel type, we have a problem!
 		throw "HotelType " + hotelType + " not found for hotel: " + slice[1];
 	}
 
@@ -393,7 +397,7 @@
 		if (data.meta.code !== 200) {
 			throw "Bulk request failed!";
 		}
-		// go through all responses, and render each hotel
+		// now go through all responses, and render each hotel in the correct order
 		var responses = data.response.response_list;
 		var responsesSorted = [];
 		var chunk = hotels[0].all.length;
@@ -409,19 +413,22 @@
 				throw "Request failed!";
 			}
 			/*
-			We also need to sort them by popularity (of hotel type) as they
+			We need to sort the hotels by popularity (of hotel type) as they
 			might not be in the correct order and the rank of a hotel can
-			change over time because of new reviews.
+			change over time, e.g. due to new reviews.
 			*/
 			currentSlices.push([index, response]);
+			// once we have seen all hotels of a hotel type category
 			if ((index + 1) % 5 === 0) {
 				var hotelType = getHotelType(index);
 				currentSlices.sort(function(a, b) {
 					if (hotelType === "all") {
+						// highest score should be moved to first spot in array
 						return -(a[1].response.summary.score - b[1].response.summary.score);
 					} else {
 						var aPopularity = getPopularity(a, hotelType);
 						var bPopularity = getPopularity(b, hotelType);
+						// lowest probability should be moved to first spot in array
 						return aPopularity - bPopularity;
 					}
 				});
