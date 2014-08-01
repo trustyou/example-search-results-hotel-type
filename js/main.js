@@ -60,7 +60,7 @@
 			{
 				name: "Hotel Berlin",
 				tyId: "0d5e3ad8-a2b7-42eb-b2d7-52281eadbf4a",
-				image: "img/Lindner_Hotel_Am_Ku'damm_Berlin.jpg"
+				image: "img/Hotel_Berlin.jpg"
 			},
 			{
 				name: "Swissotel Berlin",
@@ -87,7 +87,7 @@
 			{
 				name: "Suite Novotel Berlin Potsdamer Platz",
 				tyId: "b631adf6-92e3-437d-99e4-f96dce092b31",
-				image: "img/Novotel_Berlin_Tiergarten.jpg"
+				image: "img/Suite_Novotel_Berlin_Potsdamer_Platz.jpg"
 			},
 			{
 				name: "Louisa's Place",
