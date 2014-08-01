@@ -58,8 +58,8 @@
 				image: "img/Adina_Apartment_Hotel_Berlin.jpg"
 			},
 			{
-				name: "Lindner Hotel Am Ku'damm Berlin",
-				tyId: "f20807ae-9917-4eb8-8038-42093398d2fa",
+				name: "Hotel Berlin",
+				tyId: "0d5e3ad8-a2b7-42eb-b2d7-52281eadbf4a",
 				image: "img/Lindner_Hotel_Am_Ku'damm_Berlin.jpg"
 			},
 			{
@@ -85,8 +85,8 @@
 				image: "img/Novotel_Berlin_Mitte.jpg"
 			},
 			{
-				name: "Novotel Berlin Tiergarten",
-				tyId: "4176a0ad-4f67-489c-b6e8-270f7c98aec2",
+				name: "Suite Novotel Berlin Potsdamer Platz",
+				tyId: "b631adf6-92e3-437d-99e4-f96dce092b31",
 				image: "img/Novotel_Berlin_Tiergarten.jpg"
 			},
 			{
