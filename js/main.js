@@ -421,7 +421,26 @@
 			// once we have seen all hotels of a hotel type category
 			if ((index + 1) % 5 === 0) {
 				var hotelType = getHotelType(index);
-				currentSlices.sort(function(a, b) {
+				var currentSlicesFiltered = currentSlices;
+				if (hotelType !== "all") {
+					// filter out hotels which don't have the expected hotel type
+					currentSlicesFiltered = [];
+					for (var i = 0; i < currentSlices.length; i++) {
+						try {
+							getPopularity(currentSlices[i], hotelType);
+							currentSlicesFiltered.push(currentSlices[i]);
+						} catch(e) {
+							if (e.indexOf("HotelType ") === 0) {
+								// do nothing here as we simply won't add this
+								// element to the new array
+							}
+							else {
+								throw e;
+							}
+						}
+					}
+				}
+				currentSlicesFiltered.sort(function(a, b) {
 					if (hotelType === "all") {
 						// highest score should be moved to first spot in array
 						return -(a[1].response.summary.score - b[1].response.summary.score);
@@ -432,7 +451,7 @@
 						return aPopularity - bPopularity;
 					}
 				});
-				currentSlices.forEach(function(slice) {
+				currentSlicesFiltered.forEach(function(slice) {
 					var hotelIndex = slice[0];
 					var hotelResponse = slice[1];
 					var hotelData = hotels[(hotelIndex / 5) | 0][hotelType][hotelIndex % 5];
