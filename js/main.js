@@ -175,12 +175,7 @@
 	hotels.forEach(function(catHotels) {
 		for (var cat in catHotels) break;
 		var catRequestList = catHotels[cat].map(function(hotel) {
-			/*
-			When querying a JSON widget, always ask for the specific
-			version you developed against. This guarantees that no schema-
-			breaking changes will affect your code.
-			*/
-			return "/hotels/" + hotel.tyId + "/tops_flops.json?" + $.param({lang: "en", v: "5.16"});
+			return "/hotels/" + hotel.tyId + "/tops_flops.json?" + $.param({lang: "en"});
 		});
 		requestList.push.apply(requestList, catRequestList);
 	});
@@ -188,7 +183,7 @@
 	requestList = JSON.stringify(requestList);
 
 	var bulkRequest = $.ajax({
-		url: "http://api.trustyou.com/bulk",
+		url: "http://api.staging.trustyou.com/bulk",
 		data: {
 			request_list: requestList,
 			/*
@@ -235,11 +230,10 @@
 			for (var i = 0; i < reviewSummary.hotel_type_list.length; i++) {
 				var hotelTypeInfo = reviewSummary.hotel_type_list[i];
 				if (hotelTypeInfo.category_id === htypeMapping[hotelType]) {
-					popularity = [hotelTypeInfo.popularity];
+					popularity = [(hotelTypeInfo.popularity).toFixed()];
 					break;
+				}
 			}
-		}
-			
 		}
 		var templateData = {
 			name: hotelData.name,
