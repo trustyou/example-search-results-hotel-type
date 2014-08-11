@@ -183,7 +183,7 @@
 	requestList = JSON.stringify(requestList);
 
 	var bulkRequest = $.ajax({
-		url: "http://api.staging.trustyou.com/bulk",
+		url: "http://api.trustyou.com/bulk",
 		data: {
 			request_list: requestList,
 			/*
