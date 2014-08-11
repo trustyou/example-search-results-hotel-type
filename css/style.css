@@ -199,6 +199,8 @@ a.verified-reviews:after {
 	left: -1px;
 	min-width: 220px;
 	z-index: 99;
+	max-height: 288px;
+	overflow: auto;
 }
 
 .dropdown-menu li {
@@ -214,6 +216,15 @@ a.verified-reviews:after {
 	cursor: pointer;
 	padding: 10px 10px 10px 35px;
 	white-space: normal;
+}
+
+.dropdown-menu > li.disabled > a,
+.dropdown-menu > li.disabled > a:hover,
+.dropdown-menu > li.disabled > a:active,
+.dropdown-menu > li.disabled > a .ty-icon,
+.dropdown-menu > li.disabled > a:hover .ty-icon,
+.dropdown-menu > li.disabled > a:active .ty-icon {
+	color: #ccc;
 }
 
 .dropdown-menu a .ty-icon {
