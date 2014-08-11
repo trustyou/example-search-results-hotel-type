@@ -201,14 +201,6 @@
 	// when the DOM is ready for rendering, process the API response
 	$(function() {
 		bulkRequest.done(processApiResponse);
-
-		// if a new filter is selected, activate it and deactivate others
-		$('.tile > a').on('click', function(event) {
-			if(!$(this).parent().hasClass('selected')) {
-				$('.tile').removeClass('selected');
-				$(this).parent().addClass('selected');
-			}
-		});
 	});
 
 	/**
