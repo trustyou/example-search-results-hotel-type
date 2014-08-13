@@ -272,6 +272,16 @@ a.verified-reviews:after {
 	font-size: 1.3em;
 }
 
+.search-results .hotel h3 a,
+.search-results .hotel h3 a:link,
+.search-results .hotel h3 a:visited {
+	color: #555;
+}
+
+.search-results .hotel h3 a:hover {
+	color: #333;
+}
+
 /* Rating */
 
 .search-results .rating {
