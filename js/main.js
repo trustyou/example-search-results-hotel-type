@@ -134,6 +134,7 @@
 		// prepare the data to be passed to the template
 		var templateData = {
 			name: hotelData.name,
+			hotelId: hotelData.tyId,
 			image: hotelData.image,
 			reviewsCount: reviewSummary.reviews_count,
 			trustScore: reviewSummary.summary.score,
