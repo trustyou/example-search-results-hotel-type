@@ -27,10 +27,7 @@
 						<a href="" class="btn btn-primary">View deals</a>
 					</div>
 					<h3><a href="http://api.trustyou.com/hotels/{{hotelId}}/tops_flops.html?lang=en">{{name}}</a></h3>
-					<div class="rating">
-						{{#rank}}
-						<div class="popularity">#{{rank}} {{hotelTypeName}} in Berlin</div>
-						{{/rank}}
+					<div class="rating">						
 						<div class="stars">	
 							<span class="active">&#x2605;</span>
 							<span class="active">&#x2605;</span>
@@ -49,6 +46,16 @@
 							<div class="counter">{{reviewsCount}} Reviews</div>
 						</div>
 					</div>
+						<div class="popularity">
+							<div class="popularity-label">
+								<span class="label-part-rank">#{{rank}}</span>
+								<span class="label-part-hotel-type">{{hotelTypeName}}</span>
+								<span class="label-part-location">in Berlin</span>
+								{{#showAll}}
+								<a href="#search-results-{{hotelTypeId}}" data-toggle="tab" class="show-similar-hotels">Show similar hotels &raquo;</a>
+								{{/showAll}}
+							</div>
+						</div>
 					<p class="highlights">
 						{{#highlights}}
 						<span>&ldquo;{{text}}&rdquo;</span>
@@ -70,30 +77,30 @@
 			<ul class="summary-filters" id="summary-filters">
 				<li class="trustyou-ui tile active">
 					<a href="#search-results-all" data-toggle="tab">
-						<i class="ty-icon ty-icon-earth"></i>
-						All
+						<i class="ty-icon ty-icon-refresh"></i>
+						Best Mix
 					</a>
 				</li>
 				<li class="trustyou-ui tile">
-					<a href="#search-results-business" data-toggle="tab">
+					<a href="#search-results-16h" data-toggle="tab">
 						<i class="ty-icon ty-icon-suitcase"></i>
 						Business
 					</a>
 				</li>
 				<li class="trustyou-ui tile">
-					<a href="#search-results-family" data-toggle="tab">
+					<a href="#search-results-16c" data-toggle="tab">
 						<i class="ty-icon ty-icon-family"></i>
 						Family
 					</a>
 				</li>
 				<li class="trustyou-ui tile">
-					<a href="#search-results-romantic" data-toggle="tab">
+					<a href="#search-results-16d" data-toggle="tab">
 						<i class="ty-icon ty-icon-couple"></i>
 						Romantic
 					</a>
 				</li>
 				<li class="trustyou-ui tile">
-					<a href="#search-results-luxury" data-toggle="tab">
+					<a href="#search-results-16b" data-toggle="tab">
 						<i class="ty-icon ty-icon-crown"></i>
 						Luxury
 					</a>
@@ -105,22 +112,22 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="#search-results-boutique" data-toggle="tab"><i class="ty-icon ty-icon-call-bell"></i> Boutique</a>
+							<a href="#search-results-16g" data-toggle="tab"><i class="ty-icon ty-icon-call-bell"></i> Boutique</a>
 						</li>
 						<li>
-							<a href="#search-results-design" data-toggle="tab"><i class="ty-icon ty-icon-tuxedo"></i> Design</a>
+							<a href="#search-results-16w" data-toggle="tab"><i class="ty-icon ty-icon-tuxedo"></i> Design</a>
 						</li>
 						<li>
-							<a href="#search-results-budget" data-toggle="tab"><i class="ty-icon ty-icon-tag"></i> Budget</a>
+							<a href="#search-results-16k" data-toggle="tab"><i class="ty-icon ty-icon-tag"></i> Budget</a>
 						</li>
 						<li>
-							<a href="#search-results-city-trip" data-toggle="tab"><i class="ty-icon ty-icon-office"></i> City Trip</a>
+							<a href="#search-results-16f" data-toggle="tab"><i class="ty-icon ty-icon-office"></i> City Trip</a>
 						</li>
 						<li>
-							<a href="#search-results-party" data-toggle="tab"><i class="ty-icon ty-icon-martini"></i> Party</a>
+							<a href="#search-results-16i" data-toggle="tab"><i class="ty-icon ty-icon-martini"></i> Party</a>
 						</li>
 						<li>
-							<a href="#search-results-airport" data-toggle="tab"><i class="ty-icon ty-icon-airplane"></i> Airport</a>
+							<a href="#search-results-16aa" data-toggle="tab"><i class="ty-icon ty-icon-airplane"></i> Airport</a>
 						</li>
 
 						<li class="disabled">
@@ -157,59 +164,59 @@
 					<h2>Best Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-business">
+				<div class="tab-pane fade search-results" id="search-results-16h">
 					<h2>Best Business Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-family">
+				<div class="tab-pane fade search-results" id="search-results-16c">
 					<h2>Best Family Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-romantic">
+				<div class="tab-pane fade search-results" id="search-results-16d">
 					<h2>Best Romantic Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-luxury">
+				<div class="tab-pane fade search-results" id="search-results-16b">
 					<h2>Best Luxury Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-boutique">
+				<div class="tab-pane fade search-results" id="search-results-16g">
 					<h2>Best Boutique Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-design">
+				<div class="tab-pane fade search-results" id="search-results-16w">
 					<h2>Best Design Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-budget">
+				<div class="tab-pane fade search-results" id="search-results-16k">
 					<h2>Best Budget Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-eco-friendly">
+				<div class="tab-pane fade search-results" id="search-results-16y">
 					<h2>Best Eco-Friendly Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-spa">
-					<h2>Best Spa Hotels in Berlin</h2>
+				<div class="tab-pane fade search-results" id="search-results-16e">
+					<h2>Best Wellness Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-city-trip">
+				<div class="tab-pane fade search-results" id="search-results-16f">
 					<h2>Best City Trip Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-party">
+				<div class="tab-pane fade search-results" id="search-results-16i">
 					<h2>Best Party Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-casino">
+				<div class="tab-pane fade search-results" id="search-results-16z">
 					<h2>Best Casino Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-airport">
+				<div class="tab-pane fade search-results" id="search-results-16aa">
 					<h2>Best Airport Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
-				<div class="tab-pane fade search-results" id="search-results-beach">
+				<div class="tab-pane fade search-results" id="search-results-16t">
 					<h2>Best Beach Hotels in Berlin</h2>
 					<!-- Placeholder where content will be inserted by JavaScript: -->
 				</div>
