@@ -27,10 +27,7 @@
 						<a href="" class="btn btn-primary">View deals</a>
 					</div>
 					<h3><a href="http://api.trustyou.com/hotels/{{hotelId}}/tops_flops.html?lang=en">{{name}}</a></h3>
-					<div class="rating">
-						{{#rank}}
-						<div class="popularity">#{{rank}} {{hotelTypeName}} in Berlin</div>
-						{{/rank}}
+					<div class="rating">						
 						<div class="stars">	
 							<span class="active">&#x2605;</span>
 							<span class="active">&#x2605;</span>
@@ -49,6 +46,16 @@
 							<div class="counter">{{reviewsCount}} Reviews</div>
 						</div>
 					</div>
+						{{#rank}}
+						<div class="popularity">
+							<div class="popularity-label">
+								<span class="label-part-rank">#{{rank}}</span>
+								<span class="label-part-hotel-type">{{hotelTypeName}}</span>
+								<span class="label-part-location">in Berlin</span>
+								<a href="#search-results-all" data-toggle="tab">Show all 5 {{hotelTypeName}} &raquo;</a>
+							</div>
+						</div>
+						{{/rank}}
 					<p class="highlights">
 						{{#highlights}}
 						<span>&ldquo;{{text}}&rdquo;</span>
@@ -70,8 +77,8 @@
 			<ul class="summary-filters" id="summary-filters">
 				<li class="trustyou-ui tile active">
 					<a href="#search-results-all" data-toggle="tab">
-						<i class="ty-icon ty-icon-earth"></i>
-						All
+						<i class="ty-icon ty-icon-refresh"></i>
+						Best Mix
 					</a>
 				</li>
 				<li class="trustyou-ui tile">
