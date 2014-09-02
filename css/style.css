@@ -305,6 +305,7 @@ a.verified-reviews:after {
 .search-results .popularity .popularity-label {
 	margin: 0 0 5px;
 	font-size: .9em;
+	height: 20px;
 }
 
 .search-results .popularity [class^="label-part-"] {

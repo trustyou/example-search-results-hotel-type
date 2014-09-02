@@ -18,41 +18,41 @@
 	per city on a web page.
 	*/
 	var hotels = [
-		{tyId: "60fd56b6-8f61-4672-a1d3-d76ec6bcf540", name: "Hotel Adlon Kempinski", image: "img/Hotel_Adlon_Kempinski.jpg"},
-		{tyId: "359e1e4b-569a-4f97-aaa1-357f241a851b", name: "Das Stue", image: "img/Das_Stue.jpg"},
-		{tyId: "387d25e2-4321-4b45-a02a-e548a460383a", name: "Adina Apartment Hotel Berlin Hackescher Markt", image: "img/Adina_Apartment_Hotel_Berlin_Hackescher_Markt.jpg"},
-		{tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb", name: "Regent Berlin", image: "img/Regent_Berlin.jpg"},
-		{tyId: "a2b0b03e-3006-4fe9-a898-708a353a477d", name: "Hilton Berlin Hotel", image: "img/Hilton_Berlin_Hotel.jpg"},
-		{tyId: "72ed40a4-1680-42be-b94c-626c13de1ea7", name: "Adina Apartment Hotel Berlin Checkpoint Charlie", image: "img/Adina_Apartment_Hotel_Berlin.jpg"},
-		{tyId: "0d5e3ad8-a2b7-42eb-b2d7-52281eadbf4a", name: "Hotel Berlin", image: "img/Hotel_Berlin.jpg"},
-		{tyId: "f220cddb-4602-4d29-b29d-bcb69a24285d", name: "Swissotel Berlin", image: "img/Swissotel_Berlin.jpg"},
-		{tyId: "39b707ea-9d26-46d6-91e3-f1e12eb95aa7", name: "Novotel Berlin Mitte", image: "img/Novotel_Berlin_Mitte.jpg"},
-		{tyId: "b631adf6-92e3-437d-99e4-f96dce092b31", name: "Suite Novotel Berlin Potsdamer Platz", image: "img/Suite_Novotel_Berlin_Potsdamer_Platz.jpg"},
-		{tyId: "51fa5415-45d4-4bff-a104-e2098931ccdd", name: "Louisa's Place", image: "img/Louisa's_Place.jpg"},
-		{tyId: "4d3137f4-cdec-4050-9026-fcfe453e30a7", name: "Radisson BLU Hotel", image: "img/Radisson_BLU_Hotel.jpg"},
-		{tyId: "ae6db065-86a4-4d27-9d59-fcfe9e14c9c7", name: "Pullman Berlin Schweizerhof", image: "img/Pullman_Berlin_Schweizerhof.jpg"},
-		{tyId: "05620b88-073f-4d1e-abb5-1577133f8a99", name: "Grand Hyatt Berlin", image: "img/Grand_Hyatt_Berlin.jpg"},
-		{tyId: "83d3c9ee-1709-497d-a1e3-a83243e9aae4", name: 'Casa Camper Berlin', image: 'img/Casa_Camper_Berlin.jpg'},
-		{tyId: "383ad18c-b1a0-4076-92e6-7f432c0fa8fa", name: 'Hotel The Circus', image: 'img/Hotel_The_Circus.jpg'},
-		{tyId: "72da9727-e00a-405f-a70f-51f32e4429a2", name: 'Hotel Mondial', image: 'img/Hotel_Mondial.jpg'},
-		{tyId: "f20807ae-9917-4eb8-8038-42093398d2fa", name: "Lindner Hotel Am Ku'damm Berlin", image: "img/Lindner_Hotel_Am_Kudamm_Berlin.jpg"},
-		{tyId: "5815190d-b5a8-403f-add0-abc0b85bc00a", name: 'Aldea Novum', image: 'img/Aldea_Novum.jpg' },
-		{tyId: "b8921518-8795-4fbf-a5cd-93502f9b087c", name: 'wombats CITY HOSTEL Berlin', image: 'img/wombats_CITY_HOSTEL_Berlin.jpg'},
-		{tyId: "b213ee57-da12-4203-82c4-23c5d5b834f3", name: 'SORAT Hotel Ambassador', image: 'img/SORAT_Hotel_Ambassador.jpg'},
-		{tyId: "56333f62-a3a8-4664-90b3-b1108103980b", name: 'Plus Berlin', image: 'img/Plus_Berlin.jpg'},
-		{tyId: "2b2b53a1-4579-4b43-a85d-82d076f8495d", name: 'H2 Hotel Berlin-Alexanderplatz', image: 'img/H2_Hotel_Berlin-Alexanderplatz.jpg'},
-		{tyId: "7c9618cb-012c-4c3c-a0f1-e9a9eb2c1341", name: 'Waldorf Astoria Berlin', image: 'img/Waldorf_Astoria_Berlin.jpg'},
-		{tyId: "103df85f-9ddf-4bbd-8203-bc9da4f5bec2", name: 'Ela Apartments Berlin', image: 'img/Ela_Apartments_Berlin.jpg'},
-		{tyId: "1a2c0327-6830-430d-bde9-5b446dbb2734", name: 'Meliá Hotel Berlin', image: 'img/Melia_Hotel_Berlin.jpg'},
-		{tyId: "ce76ba37-2a1b-4524-b8fd-230514f92f47", name: 'ARCOTEL John F', image: 'img/ARCOTEL_John_F.jpg'},
-		{tyId: "68717314-3769-4e9a-84aa-1915c42d5889", name: 'Michelberger Hotel', image: 'img/Michelberger_Hotel.jpg'},
-		{tyId: "bbe1c134-c657-4f69-ad17-032316eb7be4", name: 'The Weinmeister Berlin-Mitte', image: 'img/The_Weinmeister_Berlin-Mitte.jpg'},
-		{tyId: "7663ef79-2116-4528-8a76-be2531890322", name: 'Jpg Apartment Schoneberg', image: 'img/Jpg_Apartment_Schoneberg.jpg'},
-		{tyId: "76fc91d1-f56f-4b87-b7ac-99a9008b4ec4", name: 'Nhow Berlin', image: 'img/Nhow_Berlin.jpg'},
-		{tyId: "6537e123-3f94-4433-ba57-d5af88e944dd", name: 'SANA Berlin Hotel', image: 'img/SANA_Berlin_Hotel.jpg'},
-		{tyId: "f51229a9-3ad7-4a43-acb4-00b1fc879835", name: 'Hotel Indigo Berlin Alexanderplatz', image: 'img/Hotel_Indigo_Berlin_Alexanderplatz.jpg'},
-		{tyId: "eed0de04-42b4-4aae-b47c-1c912a7e9e4d", name: 'Mercure Airport Berlin Tegel', image: 'img/Mercure_Airport_Berlin_Tegel.jpg'},
-		{tyId: "c22300ca-f2af-4fde-a7e8-795950277bc4", name: 'Hotel Artim Charlottenburg', image: 'img/Hotel_Artim_Charlottenburg.jpg'}
+	{tyId: "60fd56b6-8f61-4672-a1d3-d76ec6bcf540", name: "Hotel Adlon Kempinski", image: "img/Hotel_Adlon_Kempinski.jpg"},
+	{tyId: "359e1e4b-569a-4f97-aaa1-357f241a851b", name: "Das Stue", image: "img/Das_Stue.jpg"},
+	{tyId: "387d25e2-4321-4b45-a02a-e548a460383a", name: "Adina Apartment Hotel Berlin Hackescher Markt", image: "img/Adina_Apartment_Hotel_Berlin_Hackescher_Markt.jpg"},
+	{tyId: "07a403a9-cb62-4a20-a134-139b2eab7fdb", name: "Regent Berlin", image: "img/Regent_Berlin.jpg"},
+	{tyId: "a2b0b03e-3006-4fe9-a898-708a353a477d", name: "Hilton Berlin Hotel", image: "img/Hilton_Berlin_Hotel.jpg"},
+	{tyId: "72ed40a4-1680-42be-b94c-626c13de1ea7", name: "Adina Apartment Hotel Berlin Checkpoint Charlie", image: "img/Adina_Apartment_Hotel_Berlin.jpg"},
+	{tyId: "0d5e3ad8-a2b7-42eb-b2d7-52281eadbf4a", name: "Hotel Berlin", image: "img/Hotel_Berlin.jpg"},
+	{tyId: "f220cddb-4602-4d29-b29d-bcb69a24285d", name: "Swissotel Berlin", image: "img/Swissotel_Berlin.jpg"},
+	{tyId: "39b707ea-9d26-46d6-91e3-f1e12eb95aa7", name: "Novotel Berlin Mitte", image: "img/Novotel_Berlin_Mitte.jpg"},
+	{tyId: "b631adf6-92e3-437d-99e4-f96dce092b31", name: "Suite Novotel Berlin Potsdamer Platz", image: "img/Suite_Novotel_Berlin_Potsdamer_Platz.jpg"},
+	{tyId: "51fa5415-45d4-4bff-a104-e2098931ccdd", name: "Louisa's Place", image: "img/Louisa's_Place.jpg"},
+	{tyId: "4d3137f4-cdec-4050-9026-fcfe453e30a7", name: "Radisson BLU Hotel", image: "img/Radisson_BLU_Hotel.jpg"},
+	{tyId: "ae6db065-86a4-4d27-9d59-fcfe9e14c9c7", name: "Pullman Berlin Schweizerhof", image: "img/Pullman_Berlin_Schweizerhof.jpg"},
+	{tyId: "05620b88-073f-4d1e-abb5-1577133f8a99", name: "Grand Hyatt Berlin", image: "img/Grand_Hyatt_Berlin.jpg"},
+	{tyId: "83d3c9ee-1709-497d-a1e3-a83243e9aae4", name: 'Casa Camper Berlin', image: 'img/Casa_Camper_Berlin.jpg'},
+	{tyId: "383ad18c-b1a0-4076-92e6-7f432c0fa8fa", name: 'Hotel The Circus', image: 'img/Hotel_The_Circus.jpg'},
+	{tyId: "72da9727-e00a-405f-a70f-51f32e4429a2", name: 'Hotel Mondial', image: 'img/Hotel_Mondial.jpg'},
+	{tyId: "f20807ae-9917-4eb8-8038-42093398d2fa", name: "Lindner Hotel Am Ku'damm Berlin", image: "img/Lindner_Hotel_Am_Kudamm_Berlin.jpg"},
+	{tyId: "5815190d-b5a8-403f-add0-abc0b85bc00a", name: 'Aldea Novum', image: 'img/Aldea_Novum.jpg' },
+	{tyId: "b8921518-8795-4fbf-a5cd-93502f9b087c", name: 'wombats CITY HOSTEL Berlin', image: 'img/wombats_CITY_HOSTEL_Berlin.jpg'},
+	{tyId: "b213ee57-da12-4203-82c4-23c5d5b834f3", name: 'SORAT Hotel Ambassador', image: 'img/SORAT_Hotel_Ambassador.jpg'},
+	{tyId: "56333f62-a3a8-4664-90b3-b1108103980b", name: 'Plus Berlin', image: 'img/Plus_Berlin.jpg'},
+	{tyId: "2b2b53a1-4579-4b43-a85d-82d076f8495d", name: 'H2 Hotel Berlin-Alexanderplatz', image: 'img/H2_Hotel_Berlin-Alexanderplatz.jpg'},
+	{tyId: "7c9618cb-012c-4c3c-a0f1-e9a9eb2c1341", name: 'Waldorf Astoria Berlin', image: 'img/Waldorf_Astoria_Berlin.jpg'},
+	{tyId: "103df85f-9ddf-4bbd-8203-bc9da4f5bec2", name: 'Ela Apartments Berlin', image: 'img/Ela_Apartments_Berlin.jpg'},
+	{tyId: "1a2c0327-6830-430d-bde9-5b446dbb2734", name: 'Meliá Hotel Berlin', image: 'img/Melia_Hotel_Berlin.jpg'},
+	{tyId: "ce76ba37-2a1b-4524-b8fd-230514f92f47", name: 'ARCOTEL John F', image: 'img/ARCOTEL_John_F.jpg'},
+	{tyId: "68717314-3769-4e9a-84aa-1915c42d5889", name: 'Michelberger Hotel', image: 'img/Michelberger_Hotel.jpg'},
+	{tyId: "bbe1c134-c657-4f69-ad17-032316eb7be4", name: 'The Weinmeister Berlin-Mitte', image: 'img/The_Weinmeister_Berlin-Mitte.jpg'},
+	{tyId: "7663ef79-2116-4528-8a76-be2531890322", name: 'Jpg Apartment Schoneberg', image: 'img/Jpg_Apartment_Schoneberg.jpg'},
+	{tyId: "76fc91d1-f56f-4b87-b7ac-99a9008b4ec4", name: 'Nhow Berlin', image: 'img/Nhow_Berlin.jpg'},
+	{tyId: "6537e123-3f94-4433-ba57-d5af88e944dd", name: 'SANA Berlin Hotel', image: 'img/SANA_Berlin_Hotel.jpg'},
+	{tyId: "f51229a9-3ad7-4a43-acb4-00b1fc879835", name: 'Hotel Indigo Berlin Alexanderplatz', image: 'img/Hotel_Indigo_Berlin_Alexanderplatz.jpg'},
+	{tyId: "eed0de04-42b4-4aae-b47c-1c912a7e9e4d", name: 'Mercure Airport Berlin Tegel', image: 'img/Mercure_Airport_Berlin_Tegel.jpg'},
+	{tyId: "c22300ca-f2af-4fde-a7e8-795950277bc4", name: 'Hotel Artim Charlottenburg', image: 'img/Hotel_Artim_Charlottenburg.jpg'}
 	];
 
 	/*
@@ -90,6 +90,18 @@
 	// when the DOM is ready for rendering, process the API response
 	$(function() {
 		bulkRequest.done(processApiResponse);
+
+		// when a tab change occurs
+		$(document).on('shown.bs.tab', 'a[data-toggle="tab"]',function (e) {
+			// if tab is activated from the "Show similar hotels"link
+			if ($(this).hasClass('show-similar-hotels')){
+				// remove active class from all tiles/dropdown menus
+				$('#summary-filters a[data-toggle="tab"]').parent('li').removeClass('active');
+				// activate newly selected tab
+				$('#summary-filters a[href="' + $(this).attr('href') + '"]').parents('li, .tile').addClass('active');
+			}
+
+		});
 	});
 
 	/**
@@ -152,7 +164,7 @@
 							if (subCategory.highlight_list.length > 0) {
 								hotelTypeCategories.push(subCategory);
 							}
-					});
+						});
 
 					if (hotelTypeInfo.highlight_list.length > 0) {
 						// add highlights related to hotel type
@@ -168,7 +180,7 @@
 						*/
 					} 
 				}
-		});
+			});
 
 		// we only want to show 3 highlights in total (of course you can show more)
 		var categories = [];
@@ -196,7 +208,7 @@
 			categories.sort(function(catA, catB) {
 				return catB.relevance - catA.relevance;
 			})
-		);
+			);
 
 		// from each category, add one highlight
 		var highlight;
@@ -212,18 +224,18 @@
 				   categories, so we have to check if the text is present
 				   already before adding.
 				   */
-				if (highlights.indexOf(highlight) === -1) {
-					highlights.push(highlight);
+				   if (highlights.indexOf(highlight) === -1) {
+				   	highlights.push(highlight);
+				   }
 				}
-			}
-		});
+			});
 		// take the top three highlights
 		templateData.highlights = highlights.slice(0, 3).map(
 			function(highlight) {
 				return {
 					text: highlight
 				};
-		});
+			});
 
 		// render the template, and display the hotel
 		var hotelRendered = Mustache.render(hotelTemplate, templateData);
