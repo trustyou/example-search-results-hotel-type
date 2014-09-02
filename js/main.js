@@ -55,25 +55,6 @@
 		{tyId: "c22300ca-f2af-4fde-a7e8-795950277bc4", name: 'Hotel Artim Charlottenburg', image: 'img/Hotel_Artim_Charlottenburg.jpg'}
 	];
 
-	// mapping of hotel type keys
-	// use those as they won't change in the future
-	var hTypes = {
-		"all": "all",
-		"16h": "business",
-		"16c": "family",
-		"16d": "romantic",
-		"16b": "luxury",
-		"16i": "party",
-		"16k": "budget",
-		"16e": "wellness",
-		"16f": "city-trip",
-		"16g": "boutique",
-		"16r": "club",
-		"16t": "beach",
-		"16w": "design",
-		"16aa": "airport",
-	};
-
 	/*
 	Prepare the request to the TrustYou API. We will make use of the Bulk
 	API to launch several requests at once. Note how the language and
@@ -116,21 +97,13 @@
 
 	@param hotelData - Data for this hotel from your database, e.g. its name
 	@param reviewSummary - TrustYou Review Summary API response
-	@param hTypeKey - The hotel type of the specific hotel we are looking at
+	@param resultList - ID of the result list this hotel is to be rendered in
+	@param hotelType - Complete category object of the hotel type
 	@param rank - Rank of hotel for a specific hotel type
 	*/
-	function renderHotel(hotelData, reviewSummary, hTypeKey, rank) {
+	function renderHotel(hotelData, reviewSummary, resultList, hotelType, rank) {
 		// load the HTML template
 		var hotelTemplate = $("#tmpl-hotel").html();
-		// get actual name of hotel type
-		var hTypeName = "Hotel";
-		for (var i = 0; i < reviewSummary.hotel_type_list.length; i++) {
-			var hotelTypeInfo = reviewSummary.hotel_type_list[i];
-			if (hotelTypeInfo.category_id === hTypeKey) {
-				hTypeName = hotelTypeInfo.category_name;
-				break;
-			}
-		}
 		// prepare the data to be passed to the template
 		var templateData = {
 			name: hotelData.name,
@@ -141,7 +114,9 @@
 			scoreDescription: reviewSummary.summary.score_description,
 			rank: rank,
 			highlights: [],
-			hotelTypeName: hTypeName
+			hotelTypeId: hotelType.category_id,
+			hotelTypeName: hotelType.category_name,
+			showAll: resultList == "all"
 		};
 
 		/*
@@ -166,7 +141,7 @@
 		// first, we add hotel type specific highlights and categories
 		reviewSummary.hotel_type_list.forEach(
 			function(hotelTypeInfo) {
-				if (hotelTypeInfo.category_id === hTypeKey) {
+				if (hotelTypeInfo.category_id === hotelType.category_id) {
 					/*
 					Every identified hotel type for a particular hotel has
 					adequate categories attached. We make use of them here
@@ -252,31 +227,7 @@
 
 		// render the template, and display the hotel
 		var hotelRendered = Mustache.render(hotelTemplate, templateData);
-		$("#search-results-" + hTypes[hTypeKey]).append(hotelRendered);
-	}
-
-	function sortResponses(responses, hTypeKey) {
-		responses.sort(function(a, b) {
-			if (hTypeKey === "all") {
-				// highest score should be moved to first spot in array
-				return -(a.response.summary.score - b.response.summary.score);
-			} else {
-				var aPopularity = getPopularity(a, hTypeKey);
-				var bPopularity = getPopularity(b, hTypeKey);
-				// lowest popularity should be moved to first spot in array
-				return aPopularity - bPopularity;
-			}
-		});
-	}
-
-	function getPopularity(data, hTypeKey) {
-		for (var i = 0; i < data.response.hotel_type_list.length; i++) {
-			var hotelTypeInfo = data.response.hotel_type_list[i];
-			if (hotelTypeInfo.category_id === hTypeKey) {
-				return hotelTypeInfo.popularity;
-			}
-		}
-		return "not found";
+		$("#search-results-" + resultList).append(hotelRendered);
 	}
 
 	/**
@@ -288,6 +239,7 @@
 			throw "Bulk request failed!";
 		}
 		var responses = data.response.response_list;
+		var hotelsByType = {};
 		responses.forEach(function(response, index) {
 			// check whether the individual request was successful
 			if (response.meta.code !== 200) {
@@ -298,30 +250,60 @@
 			request_list we passed earlier. Therefore, we can merge the
 			response with our data by their index and add some context.
 			*/
-			response.hotel_data = hotels[index];
+			var hotelData = hotels[index];
+			/*
+			Put hotels in a list for each hotel type they have, along
+			with their popularity in that hotel type.
+			*/
+			response.response.hotel_type_list.forEach(function(hotelType) {
+				if (!hotelsByType.hasOwnProperty(hotelType.category_id)) {
+					hotelsByType[hotelType.category_id] = [];
+				}
+				hotelsByType[hotelType.category_id].push({
+					popularity: hotelType.popularity,
+					response: response,
+					hotelData: hotelData,
+					hotelType: hotelType
+				});
+			});
 		});
 
-		// now go through all hotel types and render a maximum of five hotels
-		// in the correct order
-		for (var hTypeKey in hTypes) {
-			var filteredResponses = [];
-			if (hTypeKey === "all") {
-				filteredResponses = responses;
-			} else {
-				for (var j = 0; j < responses.length; j++) {
-					if (getPopularity(responses[j], hTypeKey) !== "not found") {
-						filteredResponses.push(responses[j]);
-					}
-				}
-			}
-			sortResponses(filteredResponses, hTypeKey);
-			for (var i = 0; i < Math.min(filteredResponses.length, 5); i++) {
-				var hotelResponse = filteredResponses[i];
-				var hotelData = hotelResponse.hotel_data;
-				var reviewSummary = hotelResponse.response;
-				var rank = i + 1;
-				renderHotel(hotelData, reviewSummary, hTypeKey, rank);
-			}
+		/*
+		Now go through all hotel types, sort them by popularity and keep
+		only the top 5. Then render them!
+		*/
+		for (var categoryId in hotelsByType) {
+
+			hotelsByType[categoryId] = hotelsByType[categoryId]
+			// sort by descending popularity
+			.sort(function(a, b) {
+				return a.popularity - b.popularity;
+			})
+			// take top 5
+			.slice(0, 5);
+
+			// Now render each hotel!
+			hotelsByType[categoryId].forEach(function(hotel, index) {
+				var hotelData = hotel.hotelData;
+				var reviewSummary = hotel.response.response;
+				var rank = index + 1;
+				renderHotel(hotelData, reviewSummary, categoryId, hotel.hotelType, rank);
+			});
 		}
+
+		/*
+		Render the "Best Mix" page. Take the top hotel from a pre-defined
+		list of categories.
+		*/
+		["16h", "16c", "16d", "16b", "16g"].forEach(function(categoryId) {
+			if (hotelsByType[categoryId].length > 0) {
+				// note that we sorted the hotels by popularity
+				// above, so we just take the first here
+				var topHotel = hotelsByType[categoryId][0];
+				var hotelData = topHotel.hotelData;
+				var reviewSummary = topHotel.response.response;
+				renderHotel(hotelData, reviewSummary, "all", topHotel.hotelType, 1);
+			}
+		});
 	}
 })($, Mustache);
