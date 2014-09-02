@@ -307,7 +307,7 @@
 		Render the "Best Mix" page. Take the top hotel from a pre-defined
 		list of categories.
 		*/
-		["16h", "16c", "16d", "16b", "16g"].forEach(function(categoryId) {
+		["16h", "16c", "16d", "16b", "16g", "16k", "16f", "16i", "16aa"].forEach(function(categoryId) {
 			if (hotelsByType[categoryId].length > 0) {
 				// note that we sorted the hotels by popularity
 				// above, so we just take the first here
