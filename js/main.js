@@ -1,4 +1,4 @@
-(function($, Mustache) {
+(function($, Mustache, i18n, lang) {
 	"use strict";
 
 	/*
@@ -55,6 +55,10 @@
 	{tyId: "c22300ca-f2af-4fde-a7e8-795950277bc4", name: 'Hotel Artim Charlottenburg', image: 'img/Hotel_Artim_Charlottenburg.jpg'}
 	];
 
+	// render container div with selected language
+	var containerTemplate = $("#tmpl-container").html();
+	$("body").html(Mustache.render(containerTemplate, {i18n: i18n[lang]}));
+
 	/*
 	Prepare the request to the TrustYou API. We will make use of the Bulk
 	API to launch several requests at once. Note how the language and
@@ -66,7 +70,7 @@
 		// You could also specify the version as a parameter to make sure that
 		// future updates of our api won't break your code. In this case, however,
 		// we always want to work the newest version.
-		requestList.push("/hotels/" + hotel.tyId + "/tops_flops.json?" + $.param({lang: "en"}));
+		requestList.push("/hotels/" + hotel.tyId + "/tops_flops.json?" + $.param({lang: lang}));
 	});
 	// JSON-encode the request list
 	requestList = JSON.stringify(requestList);
@@ -128,7 +132,8 @@
 			highlights: [],
 			hotelTypeId: hotelType.category_id,
 			hotelTypeName: hotelType.category_name,
-			showAll: resultList == "all"
+			showAll: resultList == "all",
+			i18n: i18n[lang]
 		};
 
 		/*
@@ -208,7 +213,7 @@
 			categories.sort(function(catA, catB) {
 				return catB.relevance - catA.relevance;
 			})
-			);
+		);
 
 		// from each category, add one highlight
 		var highlight;
@@ -246,6 +251,9 @@
 	Process a response from the TrustYou Bulk API.
 	*/
 	function processApiResponse(data) {
+		// hide spinner
+		$("#spinner").hide();
+
 		// check whether the bulk request was successful
 		if (data.meta.code !== 200) {
 			throw "Bulk request failed!";
@@ -318,4 +326,4 @@
 			}
 		});
 	}
-})($, Mustache);
+})($, Mustache, i18n, lang);
