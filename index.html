@@ -22,11 +22,11 @@
 				<div class="content">
 					<div class="deals">
 						<p>
-							<span class="price">&euro;175</span>avg/night
+							<span class="price">&euro;175</span> {{i18n.avgNight}}
 						</p>
-						<a href="" class="btn btn-primary">View deals</a>
+						<a href="" class="btn btn-primary">{{i18n.deals}}</a>
 					</div>
-					<h3><a href="http://api.trustyou.com/hotels/{{hotelId}}/tops_flops.html?lang=en">{{name}}</a></h3>
+					<h3><a href="http://api.trustyou.com/hotels/{{hotelId}}/tops_flops.html?lang={{lang}}">{{name}}</a></h3>
 					<div class="rating">						
 						<div class="stars">	
 							<span class="active">&#x2605;</span>
@@ -43,16 +43,16 @@
 								<i class="ty-icon ty-icon-badge-full pos"></i>
 							</div>
 							<div class="score">{{scoreDescription}}</div>
-							<div class="counter">{{reviewsCount}} Reviews</div>
+							<div class="counter">{{reviewsCount}} {{i18n.reviews}}</div>
 						</div>
 					</div>
 						<div class="popularity">
 							<div class="popularity-label">
 								<span class="label-part-rank">#{{rank}}</span>
 								<span class="label-part-hotel-type">{{hotelTypeName}}</span>
-								<span class="label-part-location">in Berlin</span>
+								<span class="label-part-location">{{i18n.inBerlin}}</span>
 								{{#showAll}}
-								<a href="#search-results-{{hotelTypeId}}" data-toggle="tab" class="show-similar-hotels">Show similar hotels &raquo;</a>
+								<a href="#search-results-{{hotelTypeId}}" data-toggle="tab" class="show-similar-hotels">{{i18n.similarHotels}} &raquo;</a>
 								{{/showAll}}
 							</div>
 						</div>
@@ -65,173 +65,181 @@
 			</div>
 		</script>
 
+		<script id="tmpl-container" type="x-tmpl-mustache">
+			<div class="container">
+
+				<h1>{{i18n.bestHotels}}</h1>
+
+				<!-- Filter bar -->
+
+				<ul class="summary-filters" id="summary-filters">
+					<li class="trustyou-ui tile active">
+						<a href="#search-results-all" data-toggle="tab">
+							<i class="ty-icon ty-icon-refresh"></i>
+							{{i18n.bestMix}}
+						</a>
+					</li>
+					<li class="trustyou-ui tile">
+						<a href="#search-results-16h" data-toggle="tab">
+							<i class="ty-icon ty-icon-suitcase"></i>
+							{{i18n.business}}
+						</a>
+					</li>
+					<li class="trustyou-ui tile">
+						<a href="#search-results-16c" data-toggle="tab">
+							<i class="ty-icon ty-icon-family"></i>
+							{{i18n.family}}
+						</a>
+					</li>
+					<li class="trustyou-ui tile">
+						<a href="#search-results-16d" data-toggle="tab">
+							<i class="ty-icon ty-icon-couple"></i>
+							{{i18n.romantic}}
+						</a>
+					</li>
+					<li class="trustyou-ui tile">
+						<a href="#search-results-16b" data-toggle="tab">
+							<i class="ty-icon ty-icon-crown"></i>
+							{{i18n.luxury}}
+						</a>
+					</li>
+					<li class="trustyou-ui tile dropdown">
+						<a data-toggle="dropdown" href="#">
+							<i class="ty-icon ty-icon-more"></i>
+							{{i18n.more}}
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="#search-results-16g" data-toggle="tab"><i class="ty-icon ty-icon-call-bell"></i> {{i18n.boutique}}</a>
+							</li>
+							<li>
+								<a href="#search-results-16w" data-toggle="tab"><i class="ty-icon ty-icon-tuxedo"></i> {{i18n.design}}</a>
+							</li>
+							<li>
+								<a href="#search-results-16k" data-toggle="tab"><i class="ty-icon ty-icon-tag"></i> {{i18n.budget}}</a>
+							</li>
+							<li>
+								<a href="#search-results-16f" data-toggle="tab"><i class="ty-icon ty-icon-office"></i> {{i18n.cityTrip}}</a>
+							</li>
+							<li>
+								<a href="#search-results-16i" data-toggle="tab"><i class="ty-icon ty-icon-martini"></i> {{i18n.party}}</a>
+							</li>
+							<li>
+								<a href="#search-results-16aa" data-toggle="tab"><i class="ty-icon ty-icon-airplane"></i> {{i18n.airport}}</a>
+							</li>
+
+							<li class="disabled">
+								<a><i class="ty-icon ty-icon-tree-palm"></i> {{i18n.beach}}</a>
+							</li>
+							<li class="disabled">
+								<a><i class="ty-icon ty-icon-cards-full"></i> {{i18n.casino}}</a>
+							</li>
+							<li class="disabled">
+								<a><i class="ty-icon ty-icon-leaf"></i> {{i18n.ecoFriendly}}</a>
+							</li>
+							<li class="disabled">
+								<a><i class="ty-icon ty-icon-lotus"></i> {{i18n.spa}}</a>
+							</li>
+							<li class="disabled">
+								<a><i class="ty-icon ty-icon-golf"></i> {{i18n.golf}}</a>
+							</li>
+							<li class="disabled">
+								<a><i class="ty-icon ty-icon-group"></i> {{i18n.resort}}</a>
+							</li>
+							<li class="disabled">
+								<a><i class="ty-icon ty-icon-lake-house"></i> {{i18n.lake}}</a>
+							</li>
+							<li class="disabled">
+								<a><i class="ty-icon ty-icon-swiming"></i> {{i18n.waterPark}}</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<div id="spinner">
+					<img src="img/ajax-loader.gif" class="center-block"/>
+				</div>
+
+				<!-- Search results -->
+				<div class="tab-content">
+					<div class="tab-pane fade in active search-results" id="search-results-all">
+						<h2>{{bestHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16h">
+						<h2>{{bestBusinessHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16c">
+						<h2>{{bestFamilyHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16d">
+						<h2>{{bestRomanticHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16b">
+						<h2>{{bestLuxuryHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16g">
+						<h2>{{bestBoutiqueHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16w">
+						<h2>{{bestDesignHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16k">
+						<h2>{{bestBudgetHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16y">
+						<h2>{{bestEcoHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16e">
+						<h2>{{bestWellnessHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16f">
+						<h2>{{bestCityTripHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16i">
+						<h2>{{bestPartyHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16z">
+						<h2>{{bestCasinoHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16aa">
+						<h2>{{bestAirportHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+					<div class="tab-pane fade search-results" id="search-results-16t">
+						<h2>{{bestBeachHotels}}</h2>
+						<!-- Placeholder where content will be inserted by JavaScript: -->
+					</div>
+
+				</div>
+
+				<a href="http://trustyou.com" class="verified-reviews">
+					<img src="http://api.trustyou.com/static/img/verified-reviews.png?lang=zh" alt="Verified Reviews TrustYou" />
+				</a>
+			</div>
+		</script>
+
 	</head>
 
 	<body class="trustyou-ui">
-		<div class="container">
-
-			<h1>Best Hotels in Berlin</h1>
-
-			<!-- Filter bar -->
-
-			<ul class="summary-filters" id="summary-filters">
-				<li class="trustyou-ui tile active">
-					<a href="#search-results-all" data-toggle="tab">
-						<i class="ty-icon ty-icon-refresh"></i>
-						Best Mix
-					</a>
-				</li>
-				<li class="trustyou-ui tile">
-					<a href="#search-results-16h" data-toggle="tab">
-						<i class="ty-icon ty-icon-suitcase"></i>
-						Business
-					</a>
-				</li>
-				<li class="trustyou-ui tile">
-					<a href="#search-results-16c" data-toggle="tab">
-						<i class="ty-icon ty-icon-family"></i>
-						Family
-					</a>
-				</li>
-				<li class="trustyou-ui tile">
-					<a href="#search-results-16d" data-toggle="tab">
-						<i class="ty-icon ty-icon-couple"></i>
-						Romantic
-					</a>
-				</li>
-				<li class="trustyou-ui tile">
-					<a href="#search-results-16b" data-toggle="tab">
-						<i class="ty-icon ty-icon-crown"></i>
-						Luxury
-					</a>
-				</li>
-				<li class="trustyou-ui tile dropdown">
-					<a data-toggle="dropdown" href="#">
-						<i class="ty-icon ty-icon-more"></i>
-						More
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="#search-results-16g" data-toggle="tab"><i class="ty-icon ty-icon-call-bell"></i> Boutique</a>
-						</li>
-						<li>
-							<a href="#search-results-16w" data-toggle="tab"><i class="ty-icon ty-icon-tuxedo"></i> Design</a>
-						</li>
-						<li>
-							<a href="#search-results-16k" data-toggle="tab"><i class="ty-icon ty-icon-tag"></i> Budget</a>
-						</li>
-						<li>
-							<a href="#search-results-16f" data-toggle="tab"><i class="ty-icon ty-icon-office"></i> City Trip</a>
-						</li>
-						<li>
-							<a href="#search-results-16i" data-toggle="tab"><i class="ty-icon ty-icon-martini"></i> Party</a>
-						</li>
-						<li>
-							<a href="#search-results-16aa" data-toggle="tab"><i class="ty-icon ty-icon-airplane"></i> Airport</a>
-						</li>
-
-						<li class="disabled">
-							<a><i class="ty-icon ty-icon-tree-palm"></i> Beach</a>
-						</li>
-						<li class="disabled">
-							<a><i class="ty-icon ty-icon-cards-full"></i> Casino</a>
-						</li>
-						<li class="disabled">
-							<a><i class="ty-icon ty-icon-leaf"></i> Eco-friendly</a>
-						</li>
-						<li class="disabled">
-							<a><i class="ty-icon ty-icon-lotus"></i> Spa</a>
-						</li>
-						<li class="disabled">
-							<a><i class="ty-icon ty-icon-golf"></i> Golf</a>
-						</li>
-						<li class="disabled">
-							<a><i class="ty-icon ty-icon-group"></i> Resort</a>
-						</li>
-						<li class="disabled">
-							<a><i class="ty-icon ty-icon-lake-house"></i> Lake</a>
-						</li>
-						<li class="disabled">
-							<a><i class="ty-icon ty-icon-swiming"></i> Water Park</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-
-			<!-- Search results -->
-			<div class="tab-content">
-				<div class="tab-pane fade in active search-results" id="search-results-all">
-					<h2>Best Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16h">
-					<h2>Best Business Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16c">
-					<h2>Best Family Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16d">
-					<h2>Best Romantic Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16b">
-					<h2>Best Luxury Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16g">
-					<h2>Best Boutique Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16w">
-					<h2>Best Design Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16k">
-					<h2>Best Budget Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16y">
-					<h2>Best Eco-Friendly Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16e">
-					<h2>Best Wellness Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16f">
-					<h2>Best City Trip Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16i">
-					<h2>Best Party Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16z">
-					<h2>Best Casino Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16aa">
-					<h2>Best Airport Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-				<div class="tab-pane fade search-results" id="search-results-16t">
-					<h2>Best Beach Hotels in Berlin</h2>
-					<!-- Placeholder where content will be inserted by JavaScript: -->
-				</div>
-
-			</div>
-
-			<a href="http://trustyou.com" class="verified-reviews">
-				<img src="http://api.trustyou.com/static/img/verified-reviews.png" alt="Verified Reviews TrustYou" />
-			</a>
-		</div>
 
 		<!-- See js/main.js for what happens next :) -->
 		<script src="http://cdn.jsdelivr.net/mustache.js/0.8.1/mustache.min.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src="js/i18n.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>
