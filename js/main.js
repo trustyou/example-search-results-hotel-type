@@ -84,7 +84,7 @@
 			Contact TrustYou to receive your own.
 			*/
 			key: "a06294d3-4d58-45c8-97a1-5c905922e03a",
-			v: "5.18"
+			v: "5.23"
 		},
 		// Usage of JSONP is not required for server-side calls
 		dataType: "jsonp"
