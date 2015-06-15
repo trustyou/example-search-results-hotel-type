@@ -418,7 +418,7 @@ a.verified-reviews:after {
 	font-size: 2.2em;
 }
 
-/* Snippets & hotel type */
+/* Snippets, summary sentence & hotel type */
 
 .search-results .hotel .hotel-type .ty-icon {
 	float: left;
@@ -427,15 +427,16 @@ a.verified-reviews:after {
 }
 
 .search-results .hotel .hotel-type,
-.search-results .hotel .highlights {
+.search-results .hotel .highlights,
+.search-results .hotel .summary-sentence {
 	float: left;
 	width: 500px;
-	color: #666;
 	font-weight: 300;
 	font-size: 1.1em;
 }
 
 .search-results .hotel .highlights {
+	color: #666;
 	font-style: italic;
 }
 
@@ -446,8 +447,13 @@ a.verified-reviews:after {
 }
 
 .search-results .hotel .hotel-type span {
+	color: #666;
 	display: block;
 	margin-bottom: 5px;
+}
+
+.search-results .hotel .summary-sentence {
+	margin: 10px 0;
 }
 
 /* Recommended hotels */

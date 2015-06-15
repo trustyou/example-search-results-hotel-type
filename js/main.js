@@ -70,7 +70,7 @@
 		// You could also specify the version as a parameter to make sure that
 		// future updates of our api won't break your code. In this case, however,
 		// we always want to work the newest version.
-		requestList.push("/hotels/" + hotel.tyId + "/tops_flops.json?" + $.param({lang: lang}));
+		requestList.push("/hotels/" + hotel.tyId + "/meta_review.json?" + $.param({lang: lang, v: "5.25", show_filters: false}));
 	});
 	// JSON-encode the request list
 	requestList = JSON.stringify(requestList);
@@ -83,8 +83,7 @@
 			This is a demo API key, do not reuse it!
 			Contact TrustYou to receive your own.
 			*/
-			key: "a06294d3-4d58-45c8-97a1-5c905922e03a",
-			v: "5.23"
+			key: "a06294d3-4d58-45c8-97a1-5c905922e03a"
 		},
 		// Usage of JSONP is not required for server-side calls
 		dataType: "jsonp"
@@ -133,9 +132,31 @@
 			highlights: [],
 			hotelTypeId: hotelType.category_id,
 			hotelTypeName: hotelType.category_name,
+			summarySentence: "",
 			showAll: resultList == "all",
 			i18n: i18n[lang]
 		};
+
+		/*
+		Build a nice summary sentence for this hotel.
+
+		Rather than taking the pre-built sentence in the "text" property,
+		we're going to build one to fit our needs. We'll show whatever is
+		available in the "location_nearby", "location" and "summary_sentence_list"
+		properties.
+		*/
+		var summarySentence = [reviewSummary.summary.location_nearby, reviewSummary.summary.location].concat(reviewSummary.summary.summary_sentence_list)
+		.filter(function(component) {
+			// filter out a component in case there's no data for it
+			return component != null;
+		})
+		.map(function(component) {
+			var text = component.text;
+			return text.slice(-1) == "." ? text : text + ".";
+		})
+		.join(" ");
+
+		templateData.summarySentence = summarySentence;
 
 		/*
 		When displaying several hotels on a result list page, it is
