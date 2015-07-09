@@ -139,6 +139,7 @@
 			hotelTypeName: hotelType.category_name,
 			summarySentence: "",
 			showAll: resultList == "all",
+			lang: lang,
 			i18n: i18n[lang]
 		};
 
