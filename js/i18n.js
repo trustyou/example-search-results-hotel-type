@@ -85,34 +85,4 @@ var i18n = {
 	}
 };
 
-var lang = (function(){
-	var loc = location.search,
-		args = null,
-		lang = null;
-
-	if(loc[loc.length - 1] == "/"){
-		loc = loc.substring(1, loc.length - 1);
-	}
-	else {
-		loc = loc.substring(1, loc.length);
-	}
-
-	args = loc.split("&");
-	var len = args.length,
-		arg = null;
-
-	for(var i = 0; i < len; i++){
-		arg = args[i].split('=');
-		if(arg[0] == "lang"){
-			lang = arg[1];
-			break
-		}
-	}
-
-	if( lang != null && lang in i18n){
-		return lang;
-	}
-	else{
-		return "en";
-	}
-})();
+var lang = "en"; // hardcoded for now
