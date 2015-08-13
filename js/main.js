@@ -75,13 +75,8 @@
 	// JSON-encode the request list
 	requestList = JSON.stringify(requestList);
 
-	/*
-	Note: This example is temporarily pointing at our staging platform to
-	showcase some new features. Contact TrustYou to learn more about what's
-	new in Meta-Review API v5.25.
-	*/
 	var bulkRequest = $.ajax({
-		url: "http://api.staging.trustyou.com/bulk",
+		url: "http://api.trustyou.com/bulk",
 		data: {
 			request_list: requestList,
 			/*
