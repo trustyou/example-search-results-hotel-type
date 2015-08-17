@@ -52,7 +52,8 @@
 	{tyId: "6537e123-3f94-4433-ba57-d5af88e944dd", name: 'SANA Berlin Hotel', image: 'img/SANA_Berlin_Hotel.jpg'},
 	{tyId: "f51229a9-3ad7-4a43-acb4-00b1fc879835", name: 'Hotel Indigo Berlin Alexanderplatz', image: 'img/Hotel_Indigo_Berlin_Alexanderplatz.jpg'},
 	{tyId: "eed0de04-42b4-4aae-b47c-1c912a7e9e4d", name: 'Mercure Airport Berlin Tegel', image: 'img/Mercure_Airport_Berlin_Tegel.jpg'},
-	{tyId: "c22300ca-f2af-4fde-a7e8-795950277bc4", name: 'Hotel Artim Charlottenburg', image: 'img/Hotel_Artim_Charlottenburg.jpg'}
+	{tyId: "c22300ca-f2af-4fde-a7e8-795950277bc4", name: 'Hotel Artim Charlottenburg', image: 'img/Hotel_Artim_Charlottenburg.jpg'},
+	{tyId: "95a43e75-4383-420d-8927-58754c414b5a", name: 'Your Room in Berlin', image: 'img/Mercure_Airport_Berlin_Tegel.jpg'}
 	];
 
 	// render container div with selected language
