@@ -53,7 +53,33 @@
 	{tyId: "f51229a9-3ad7-4a43-acb4-00b1fc879835", name: 'Hotel Indigo Berlin Alexanderplatz', image: 'img/Hotel_Indigo_Berlin_Alexanderplatz.jpg'},
 	{tyId: "eed0de04-42b4-4aae-b47c-1c912a7e9e4d", name: 'Mercure Airport Berlin Tegel', image: 'img/Mercure_Airport_Berlin_Tegel.jpg'},
 	{tyId: "c22300ca-f2af-4fde-a7e8-795950277bc4", name: 'Hotel Artim Charlottenburg', image: 'img/Hotel_Artim_Charlottenburg.jpg'},
-	{tyId: "95a43e75-4383-420d-8927-58754c414b5a", name: 'Your Room in Berlin', image: 'img/Mercure_Airport_Berlin_Tegel.jpg'}
+	{tyId: "da00834e-2ad4-40b2-a64d-5c2bd61d5d6a", name: 'Berlin Marriott Hotel', image: 'img/mariott_berlin.jpg'},
+	{tyId: "652088f5-fcfa-4e46-b44f-85200355acfa", name: 'Hotel de Rome', image: 'img/hotel-de-rome.jpg'},
+	{tyId: "ae9e8b4f-5f8f-4b19-8369-b0c8ae713418", name: 'Cozy Off Kudamm Apartments', image: 'img/cozy_off_kudam.jpg'},
+	{tyId: "da0d1b2c-5122-4538-9027-b198bb653f14", name: 'Titanic Deluxe Berlin', image: 'img/Mercure_Airport_Berlin_Tegel.jpg'},
+	{tyId: "1bf5e707-db84-48b7-8571-7ab5431340d0", name: 'Ibis Berlin Kurfuerstendamm', image: 'img/ibis_kudam.jpg'},
+	{tyId: "978fd953-1b8f-43a2-9eb2-a92e1545bb9a", name: 'Q-Damm-Apartments', image: 'img/qdamm_apartments.jpg'},
+	{tyId: "5785b7de-5de2-4013-8051-c9ca3d536d72", name: 'TopDomizil Panorama Apartments Friedrichstraße', image: 'img/topdomizil_panorama.jpg'},
+	{tyId: "5ca46e2a-0750-41a1-b449-d388a25e8936", name: '25hours Hotel Bikini Berlin', image: 'img/25hours-hotel-bikini.jpg'},
+	{tyId: "5b76178c-f9ba-4b6d-8a45-b13111840200", name: 'Riverside Am Tegel See', image: 'img/riverside_tegel.jpg'},
+	{tyId: "954f7c26-2843-430e-8b6a-3eb778edb11f", name: 'Mittendrin', image: 'img/mittendrin_berlin.jpg'},
+	{tyId: "dbf694c1-74ea-43a3-8ba3-d15e61a134dd", name: 'Residenz Villa Kult', image: 'img/residenz_villa_kult.jpg'},
+	{tyId: "178c2815-16d5-428d-8eab-b443ab676681", name: 'Hotel Otto', image: 'img/hotel-otto.jpg'},
+	{tyId: "fb75ad7b-77aa-4d9c-bda3-fb41c05b16fe", name: 'Hollywood Media Hotel', image: 'img/hollywood_media_hotel.jpg'},
+	{tyId: "b35dddb5-18cc-469e-9ab4-d6e9bd9d7c29", name: 'Check In', image: 'img/check_in_hostel.jpg'},
+	{tyId: "9e4244b3-81ad-426a-b7ee-6cec170c71a9", name: 'ABACUS Tierpark Hotel', image: 'img/abacus-tierpark-hotel.jpg'},
+	{tyId: "0a2d4738-ea83-46ea-96a1-598b6fa1471f", name: 'Winters Hotel Berlin Mitte-The Wall at Checkpoint Charlie', image: 'img/winters_berlin_mitte.jpg'},
+	{tyId: "f59cf46b-bb80-4b0c-b49d-3862211002bc", name: 'Jetpak Alternative', image: 'img/jetpak_alternative.jpg'},
+	{tyId: "861cb204-f7a9-42b1-ae3a-42652b8ecdab", name: 'Hotel am Steinplatz - Autograph Collection', image: 'img/hotel_am_steinplatz.jpg'},
+	{tyId: "1bda9c97-ce40-45de-9f36-ead7f02aca5c", name: 'SOHO HOUSE BERLIN', image: 'img/soho_house.jpg'},
+	{tyId: "9f3f4a1a-982b-4db2-aae8-a43abe786ecf", name: 'Centrovital Berlin', image: 'img/centrovital-hotel-berlin.jpg'},
+	{tyId: "4bed91db-3376-45ea-bcf2-45fc8ff89547", name: 'InterContinental Berlin', image: 'img/intercontinental-berlin.jpg'},
+	{tyId: "89cad8af-4ca7-457a-be03-e2721f60d24e", name: 'Jugendhotel berlincity', image: 'img/jugendhotel-berlincity.jpg'},
+	{tyId: "a6d7ac66-51ca-46b4-9a74-57324a2977b4", name: 'The Mandala Hotel', image: 'img/the_mandala.jpg'},
+	{tyId: "1a20e70a-40ff-4f83-ad1d-10916f5352c9", name: 'Mercure Hotel & Residenz Berlin Checkpoint Charlie', image: 'img/mercure_checkpoint.jpg'},
+	{tyId: "981b03ad-fb29-447f-8f11-f140abc5810c", name: 'Ackselhaus', image: 'img/ackselhaus.jpg'},
+	{tyId: "83380df6-b102-4305-a890-20c2dadea9f7", name: 'Hotel Pension Columbus', image: 'img/hotel-pension-columbus.jpg'},
+	{tyId: "d24611fe-19f0-4236-bf74-3147536f636c", name: 'Spree Idyll Hotel am Yachthafen', image: 'img/hotel-spree-idyll.jpg'},
 	];
 
 	// render container div with selected language
@@ -68,9 +94,8 @@
 	*/
 	var requestList = [];
 	hotels.forEach(function(hotel) {
-		// You could also specify the version as a parameter to make sure that
-		// future updates of our api won't break your code. In this case, however,
-		// we always want to work the newest version.
+		// We specify the version as a parameter to make sure that
+		// future updates of our api won't break the code.
 		requestList.push("/hotels/" + hotel.tyId + "/meta_review.json?" + $.param({lang: lang, v: "5.25", show_filters: false}));
 	});
 	// JSON-encode the request list
@@ -114,11 +139,11 @@
 
 	@param hotelData - Data for this hotel from your database, e.g. its name
 	@param reviewSummary - TrustYou Review Summary API response
-	@param resultList - ID of the result list this hotel is to be rendered in
-	@param hotelType - Complete category object of the hotel type
-	@param rank - Rank of hotel for a specific hotel type
+	@param categoryId - ID of the category list this hotel is to be rendered in
+	@param rank - Rank of the hotel in this category
+	@param showAll - Boolean to mark whether this render is for the "Best Mix" filter
 	*/
-	function renderHotel(hotelData, reviewSummary, resultList, hotelType, rank) {
+	function renderHotel(hotelData, reviewSummary, categoryId, rank, showAll) {
 		// load the HTML template
 		var hotelTemplate = $("#tmpl-hotel").html();
 		// prepare the data to be passed to the template
@@ -131,10 +156,10 @@
 			scoreDescription: reviewSummary.summary.score_description,
 			rank: rank,
 			highlights: [],
-			hotelTypeId: hotelType.category_id,
-			hotelTypeName: hotelType.category_name,
+			categoryId: categoryId,
+			categoryName: "",
 			summarySentence: "",
-			showAll: resultList == "all",
+			showAll: showAll,
 			lang: lang,
 			i18n: i18n[lang]
 		};
@@ -153,8 +178,7 @@
 			return component != null;
 		})
 		.map(function(component) {
-			var text = component.text;
-			return text.slice(-1) == "." ? text : text + ".";
+			return component.text;
 		})
 		.join(" ");
 
@@ -167,8 +191,8 @@
 		room a lot, and it is repetitive to see "great location"
 		several times.
 
-		Instead, we will make use of hotel type specific categories as well as
-		the "relevance" property, which is provided by TrustYou to find
+		Instead, we will make use of categories specific to the current filter
+		as well as the "relevance" property, which is provided by TrustYou to find
 		categories which set a hotel apart from other comparable hotels.
 
 		Additionally, instead of a generic category name like "Great
@@ -177,87 +201,72 @@
 		which are much more unique and specific to the hotel, e.g.
 		"Right next to Brandenburg Gate".
 		*/
-		var highlights = [];
-		var hotelTypeCategories = [];
-		// first, we add hotel type specific highlights and categories
-		reviewSummary.hotel_type_list.forEach(
-			function(hotelTypeInfo) {
-				if (hotelTypeInfo.category_id === hotelType.category_id) {
-					/*
-					Every identified hotel type for a particular hotel has
-					adequate categories attached. We make use of them here
-					by adding all those with highlights to a list.
-					*/
-					hotelTypeInfo.sub_category_list.forEach(
-						function(subCategory) {
-							if (subCategory.highlight_list.length > 0) {
-								hotelTypeCategories.push(subCategory);
-							}
-						});
 
-					if (hotelTypeInfo.highlight_list.length > 0) {
-						// add highlights related to hotel type
-						hotelTypeInfo.highlight_list.forEach(function(highlight) {
+		
+		// We first aggregate all categories into one list, 
+		// to be able to loop through them easily. 
+		// Start with top-level categories ...
+		var categories = reviewSummary.category_list;
+		// ... add all of their sub categories ...
+		reviewSummary.category_list.forEach(function(category) {
+			categories = categories.concat(category.sub_category_list);
+		}); 
+
+		var highlights = [];
+		// ... and finally hotel types
+		categories.concat(reviewSummary.hotel_type_list)
+		// loop through them, fine the current category
+		.forEach(function(category) {
+			if (category.category_id === categoryId){
+				// save the category name...
+				templateData.categoryName = category.category_name
+				// ... and hightlights
+				category.highlight_list.forEach(function(highlight) {
+					highlights.push(highlight.text);
+				});
+				// if the category has subcategories, save their hightlights, too
+				if (category.hasOwnProperty("sub_category_list")) {
+					category.sub_category_list.forEach(function(subCategory) {
+						subCategory.highlight_list.forEach(function(highlight) {
 							highlights.push(highlight.text);
 						});
-						/*
-						Notice that we don't make use of the short text
-						property here. This is because we have so many other
-						sources for getting valuable highlights which are 
-						preferred to the short text properties which can become
-						repetitive in our use case.
-						*/
-					} 
+					});
 				}
-			});
+			}
+		});
 
 		// we only want to show 3 highlights in total (of course you can show more)
-		var categories = [];
-		if (highlights.length + hotelTypeCategories.length < 3) {
+		if (highlights.length < 3) {
 			/*
-			If the hotel type highlights and hotel type subcategory highlights
+			If the combined highlights of the category and subcategory
 			together are less than 3, we will fill the remaining spots with
-			highlights from our general category list of that hotel, sorted
-			by relevance.
+			highlights from our general category list of that hotel,
+			which we sort by relevance first. We take only highlight per category,
+			to not get repetitive.
 			*/
-
-			// Aggregate all categories into one list! Start with top-level categories ...
-			categories = reviewSummary.category_list;
-			// ... add all of their sub categories ...
-			reviewSummary.category_list.forEach(function(category) {
-				categories = categories.concat(category.sub_category_list);
-			});
-			// ... and all good to know categories
-			categories = categories.concat(reviewSummary.good_to_know_list);
-		}
-
-		// Finally sort our combined category list by relevance while giving
-		// preference to the hotelTypeCategories
-		var relevantCategories = hotelTypeCategories.concat(
 			categories.sort(function(catA, catB) {
 				return catB.relevance - catA.relevance;
 			})
-		);
+			.forEach(function(category) {
+				if (category.highlight_list.length > 0) {
+					/*
+					If there are highlights for this category, pick
+					the first one.
+					*/
+					var highlight = category.highlight_list[0].text;
+						/*
+						Note that highlights can repeat in different
+						categories, so we have to check if the text is present
+						already before adding.
+						*/
+						if (highlights.indexOf(highlight) === -1) {
+							highlights.push(highlight);
+						}
+					}
+				});
+		}
 
-		// from each category, add one highlight
-		var highlight;
-		relevantCategories.forEach(function(category) {
-			if (category.highlight_list.length > 0) {
-				/*
-				If there are highlights for this category, pick
-				the first one.
-				*/
-				highlight = category.highlight_list[0].text;
-				/*
-				   Note that highlights can repeat in different
-				   categories, so we have to check if the text is present
-				   already before adding.
-				   */
-				   if (highlights.indexOf(highlight) === -1) {
-				   	highlights.push(highlight);
-				   }
-				}
-			});
+
 		// take the top three highlights
 		templateData.highlights = highlights.slice(0, 3).map(
 			function(highlight) {
@@ -268,7 +277,13 @@
 
 		// render the template, and display the hotel
 		var hotelRendered = Mustache.render(hotelTemplate, templateData);
-		$("#search-results-" + resultList).append(hotelRendered);
+		if (showAll){
+			var identifier = "all"
+		}
+		else {
+			var identifier = categoryId
+		}
+		$("#search-results-" + identifier).append(hotelRendered);
 	}
 
 	/**
@@ -284,20 +299,39 @@
 		}
 		var responses = data.response.response_list;
 		var hotelsByType = {};
+		var hotelsByCategory = {};
 		responses.forEach(function(response, index) {
 			// check whether the individual request was successful
 			if (response.meta.code !== 200) {
 				throw "Request failed!";
 			}
 			/*
-			Results are guaranteed to be in the same order as the
+			Responses are guaranteed to be in the same order as the
 			request_list we passed earlier. Therefore, we can merge the
 			response with our data by their index and add some context.
 			*/
 			var hotelData = hotels[index];
 			/*
-			Put hotels in a list for each hotel type they have, along
-			with their popularity in that hotel type.
+			Loop through the badge list, put the hotel into a list of badges
+			for every category badge it has.
+			*/
+			response.response.badge_list.forEach(function(badge) {
+				if (badge.badge_type == "category") {
+					if (!hotelsByCategory.hasOwnProperty(badge.badge_data.category_id)) {
+						hotelsByCategory[badge.badge_data.category_id] = [];
+					}
+					hotelsByCategory[badge.badge_data.category_id].push({
+						rank: badge.badge_data.rank,
+						response: response.response,
+						hotelData: hotelData,
+					});
+				}
+			});
+			/*
+			Do the same with the hotel type list to get these badges, too.
+			// TOFIX: Once hotel type badges are guaranteed to be the same
+			// as the hotel types, get them together with the categories in
+			// the above loop through the badges.
 			*/
 			response.response.hotel_type_list.forEach(function(hotelType) {
 				if (!hotelsByType.hasOwnProperty(hotelType.category_id)) {
@@ -305,9 +339,8 @@
 				}
 				hotelsByType[hotelType.category_id].push({
 					popularity: hotelType.popularity,
-					response: response,
+					response: response.response,
 					hotelData: hotelData,
-					hotelType: hotelType
 				});
 			});
 		});
@@ -329,9 +362,23 @@
 			// Now render each hotel!
 			hotelsByType[categoryId].forEach(function(hotel, index) {
 				var hotelData = hotel.hotelData;
-				var reviewSummary = hotel.response.response;
+				var reviewSummary = hotel.response;
 				var rank = index + 1;
-				renderHotel(hotelData, reviewSummary, categoryId, hotel.hotelType, rank);
+				renderHotel(hotelData, reviewSummary, categoryId, rank, false);
+			});
+		}
+
+		/*
+		Do the same for the category badges, but sort them by rank.
+		There never are more than five badges per category, so no need to slice.
+		*/
+		for (var categoryId in hotelsByCategory) {
+			hotelsByCategory[categoryId]
+			.sort(function(a, b) {
+				return a.rank - b.rank;
+			})
+			.forEach(function(hotel, index) {
+				renderHotel(hotel.hotelData, hotel.response, categoryId, hotel.rank, false);
 			});
 		}
 
@@ -339,14 +386,16 @@
 		Render the "Best Mix" page. Take the top hotel from a pre-defined
 		list of categories.
 		*/
-		["16h", "16c", "16d", "16b", "16g", "16k", "16f", "16i", "16aa"].forEach(function(categoryId) {
+		["111", "11e", "14c", "24", "201", "171", "131", "16h", "16c", "16d", "16b"].forEach(function(categoryId) {
+			// merge category and hotel type lists
+			for (var hotel in hotelsByCategory) { hotelsByType[hotel] = hotelsByCategory[hotel]; }
+			// pick the correct filter from the merged list
 			if (hotelsByType[categoryId].length > 0) {
-				// note that we sorted the hotels by popularity
-				// above, so we just take the first here
+				// as we sorted the hotels above, we just take the first one here
 				var topHotel = hotelsByType[categoryId][0];
 				var hotelData = topHotel.hotelData;
-				var reviewSummary = topHotel.response.response;
-				renderHotel(hotelData, reviewSummary, "all", topHotel.hotelType, 1);
+				var reviewSummary = topHotel.response;
+				renderHotel(hotelData, reviewSummary, categoryId, 1, true);
 			}
 		});
 	}
