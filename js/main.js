@@ -212,28 +212,29 @@
 			categories = categories.concat(category.sub_category_list);
 		}); 
 
-		var highlights = [];
 		// ... and finally hotel types
-		categories.concat(reviewSummary.hotel_type_list)
-		// loop through them, fine the current category
-		.forEach(function(category) {
-			if (category.category_id === categoryId){
-				// save the category name...
-				templateData.categoryName = category.category_name
-				// ... and hightlights
-				category.highlight_list.forEach(function(highlight) {
+		var category = categories.concat(reviewSummary.hotel_type_list)
+		// find the current category
+		.filter(function(cat) {
+			return cat.category_id === categoryId
+		})[0]
+
+		// save the category name...
+		templateData.categoryName = category.category_name
+
+		// ... and hightlights
+		var highlights = [];
+		category.highlight_list.forEach(function(highlight) {
+			highlights.push(highlight.text);
+		});
+		// if the category has subcategories, save their hightlights, too
+		if (category.hasOwnProperty("sub_category_list")) {
+			category.sub_category_list.forEach(function(subCategory) {
+				subCategory.highlight_list.forEach(function(highlight) {
 					highlights.push(highlight.text);
 				});
-				// if the category has subcategories, save their hightlights, too
-				if (category.hasOwnProperty("sub_category_list")) {
-					category.sub_category_list.forEach(function(subCategory) {
-						subCategory.highlight_list.forEach(function(highlight) {
-							highlights.push(highlight.text);
-						});
-					});
-				}
-			}
-		});
+			});
+		}
 
 		// we only want to show 3 highlights in total (of course you can show more)
 		if (highlights.length < 3) {
