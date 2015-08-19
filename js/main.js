@@ -191,9 +191,7 @@
 		room a lot, and it is repetitive to see "great location"
 		several times.
 
-		Instead, we will make use of categories specific to the current filter
-		as well as the "relevance" property, which is provided by TrustYou to find
-		categories which set a hotel apart from other comparable hotels.
+		Instead, we will make use of the categories specific to the current filter.
 
 		Additionally, instead of a generic category name like "Great
 		Location", we will use content from the "highlight_list"
@@ -211,11 +209,11 @@
 		reviewSummary.category_list.forEach(function(category) {
 			categories = categories.concat(category.sub_category_list);
 		}); 
-
 		// ... and finally hotel types
-		var category = categories.concat(reviewSummary.hotel_type_list)
+		categories = categories.concat(reviewSummary.hotel_type_list)
+
 		// find the current category
-		.filter(function(cat) {
+		var category = categories.filter(function(cat) {
 			return cat.category_id === categoryId
 		})[0]
 
@@ -235,38 +233,6 @@
 				});
 			});
 		}
-
-		// we only want to show 3 highlights in total (of course you can show more)
-		if (highlights.length < 3) {
-			/*
-			If the combined highlights of the category and subcategory
-			together are less than 3, we will fill the remaining spots with
-			highlights from our general category list of that hotel,
-			which we sort by relevance first. We take only highlight per category,
-			to not get repetitive.
-			*/
-			categories.sort(function(catA, catB) {
-				return catB.relevance - catA.relevance;
-			})
-			.forEach(function(category) {
-				if (category.highlight_list.length > 0) {
-					/*
-					If there are highlights for this category, pick
-					the first one.
-					*/
-					var highlight = category.highlight_list[0].text;
-						/*
-						Note that highlights can repeat in different
-						categories, so we have to check if the text is present
-						already before adding.
-						*/
-						if (highlights.indexOf(highlight) === -1) {
-							highlights.push(highlight);
-						}
-					}
-				});
-		}
-
 
 		// take the top three highlights
 		templateData.highlights = highlights.slice(0, 3).map(
