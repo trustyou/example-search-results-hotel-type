@@ -161,7 +161,8 @@
 			summarySentence: "",
 			showAll: showAll,
 			lang: lang,
-			i18n: i18n[lang]
+			i18n: i18n[lang],
+			additionalBadges: []
 		};
 
 		/*
@@ -212,12 +213,17 @@
 			categories = categories.concat(category.sub_category_list);
 		}); 
 
+		var categoryDir = {};
+
 		// ... and finally hotel types
-		var category = categories.concat(reviewSummary.hotel_type_list)
+		categories.concat(reviewSummary.hotel_type_list)
+		// store them in an easily accessable way
+		.forEach(function(cat) {
+			categoryDir[cat.category_id] = cat
+		})
+
 		// find the current category
-		.filter(function(cat) {
-			return cat.category_id === categoryId
-		})[0]
+		var category = categoryDir[categoryId]
 
 		// save the category name...
 		templateData.categoryName = category.category_name
@@ -275,6 +281,64 @@
 					text: highlight
 				};
 			});
+
+		// get some additional badges this hotel has
+		// filter the badge list by the different badge types, remove the current badge
+		// sort them, take the top 2
+		// save all badges in the same format
+
+		// there is only one summary badge, so no need to sort and slice here
+		var summaryBadge = reviewSummary.badge_list.filter(
+			function(badge) {
+				return badge.badge_type === "ranking"
+			})
+		.map(
+			function(badge) {
+				var popularity = badge.badge_data.popularity.toFixed()
+				return {
+					badgeName: "Overall Rating",
+					badgeRank: "Top " + popularity + "%",
+				};
+			});
+
+		var htypeBadges = reviewSummary.badge_list.filter(
+			function(badge) {
+				return badge.badge_type === "hotel_type"
+					&& badge.badge_data.category_id != categoryId
+					&& categoryDir[badge.badge_data.category_id]
+			})
+		.sort(function(a, b) {
+				return a.badge_data.popularity - b.badge_data.popularity;
+			})
+		.slice(0,2)
+		.map(
+			function(badge) {
+				var popularity = badge.badge_data.popularity.toFixed()
+				return {
+					badgeName: categoryDir[badge.badge_data.category_id].category_name,
+					badgeRank: "Top " + popularity + "%",
+				};
+			});
+
+		var categoryBadges = reviewSummary.badge_list.filter(
+			function(badge) {
+				return badge.badge_type === "category"
+					&& badge.badge_data.category_id != categoryId
+			})
+		.sort(function(a, b) {
+				return a.badge_data.rank - b.badge_data.rank;
+			})
+		.slice(0,2)
+		.map(
+			function(badge) {
+				return {
+					badgeName: categoryDir[badge.badge_data.category_id].category_name,
+					badgeRank: "#" + badge.badge_data.rank,
+				};
+			});
+
+		//concatenate the three badge lists
+		templateData["additionalBadges"] = summaryBadge.concat(htypeBadges).concat(categoryBadges)
 
 		// render the template, and display the hotel
 		var hotelRendered = Mustache.render(hotelTemplate, templateData);
