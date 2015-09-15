@@ -277,7 +277,9 @@ a.verified-reviews:after {
 .search-results .hotel h3 a:hover {
 	color: #333;
 }
-
+.search-results .show-similar-hotels{
+	clear:both;
+}
 /* Rating */
 
 .search-results .rating {
@@ -294,21 +296,29 @@ a.verified-reviews:after {
 }
 
 .search-results .popularity .popularity-label{
-	margin: 0 5px 5px 0;
-	font-size: .9em;
-	height: 20px;
-	float:left;
+	background: #f1f1f1 none repeat scroll 0 0;
+    border: 1px solid #d8d8d8;
+    border-radius: 2px;
+    color: #333;
+    float: left;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-right: 10px;
+    padding: 10px;
+    text-transform: capitalize;
+    transition: all 0.1s ease-in-out 0s;
+    text-align: center;
+    min-width: 100px;
+    margin-bottom:10px;
 }
 
 .search-results .popularity [class^="label-part-"] {
-	color: #fff;
-	background: #666;
-	padding: 1px 3px;
-	float: left;
 }
 
 .search-results .popularity .label-part-rank{
-	padding-left: 7px;
+	color: #357ebd;
+    text-transform: uppercase;
+    font-weight:500;
 }
 
 .search-results .popularity .label-part-hotel-type{
@@ -316,8 +326,12 @@ a.verified-reviews:after {
 }
 
 .search-results .popularity .label-part-location{
-	color: #bbb;
-	padding-right: 7px;
+	color: #aaa;
+    display: block;
+    font-weight: 400;
+    text-transform: none;
+    transition: all 0.1s ease-in-out 0s;
+	float:none;
 }
 
 .search-results .popularity a{
@@ -431,6 +445,7 @@ a.verified-reviews:after {
 .search-results .hotel .highlights {
 	color: #666;
 	font-style: italic;
+	padding-top: 7px;
 }
 
 .search-results .hotel .highlights span {
