@@ -425,10 +425,10 @@
 			.slice(0, 5);
 
 			// Now render each hotel!
-			hotelsByType[categoryId].forEach(function(hotel, index) {
+			hotelsByType[categoryId].forEach(function(hotel) {
 				var hotelData = hotel.hotelData;
 				var reviewSummary = hotel.response;
-				var rank = index + 1;
+				var rank = "Top " + hotel.popularity.toFixed() + "%";
 				renderHotel(hotelData, reviewSummary, categoryId, rank, false);
 			});
 		}
@@ -443,7 +443,8 @@
 				return a.rank - b.rank;
 			})
 			.forEach(function(hotel, index) {
-				renderHotel(hotel.hotelData, hotel.response, categoryId, hotel.rank, false);
+				var rank = "#" + hotel.rank;
+				renderHotel(hotel.hotelData, hotel.response, categoryId, rank, false);
 			});
 		}
 
@@ -460,7 +461,7 @@
 				var topHotel = hotelsByType[categoryId][0];
 				var hotelData = topHotel.hotelData;
 				var reviewSummary = topHotel.response;
-				renderHotel(hotelData, reviewSummary, categoryId, 1, true);
+				renderHotel(hotelData, reviewSummary, categoryId, "#1", true);
 			}
 		});
 	}
