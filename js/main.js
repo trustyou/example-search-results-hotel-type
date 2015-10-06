@@ -449,19 +449,29 @@
 		}
 
 		/*
-		Render the "Best Mix" page. Take the top hotel from a pre-defined
-		list of categories.
+		Render the "Best Mix" page. Take the top hotel from pre-defined
+		lists of categories and hotel types.
 		*/
-		["111", "11e", "14c", "24", "201", "171", "131", "16h", "16c", "16d", "16b"].forEach(function(categoryId) {
-			// merge category and hotel type lists
-			for (var hotel in hotelsByCategory) { hotelsByType[hotel] = hotelsByCategory[hotel]; }
+		["111", "11e", "14c", "24", "201", "171", "131"].forEach(function(categoryId) {
+			// pick the correct filter from the merged list
+			if (hotelsByCategory[categoryId].length > 0) {
+				// as we sorted the hotels above, we just take the first one here
+				var topHotel = hotelsByCategory[categoryId][0];
+				var hotelData = topHotel.hotelData;
+				var reviewSummary = topHotel.response;
+				renderHotel(hotelData, reviewSummary, categoryId, "#1", true);
+			}
+		});
+
+		["16h", "16c", "16d", "16b"].forEach(function(categoryId) {
 			// pick the correct filter from the merged list
 			if (hotelsByType[categoryId].length > 0) {
 				// as we sorted the hotels above, we just take the first one here
 				var topHotel = hotelsByType[categoryId][0];
 				var hotelData = topHotel.hotelData;
 				var reviewSummary = topHotel.response;
-				renderHotel(hotelData, reviewSummary, categoryId, "#1", true);
+				var rank = "Top " + topHotel.popularity.toFixed() + "%";
+				renderHotel(hotelData, reviewSummary, categoryId, rank, true);
 			}
 		});
 	}
