@@ -230,6 +230,10 @@ a.verified-reviews:after {
 
 /* Search results */
 
+.search-results .content{
+	float:left;
+	width:695px;
+}
 .search-results h2 {
 	margin: 0 0 30px;
 	color: #08c;
@@ -273,7 +277,9 @@ a.verified-reviews:after {
 .search-results .hotel h3 a:hover {
 	color: #333;
 }
-
+.search-results .show-similar-hotels{
+	clear:both;
+}
 /* Rating */
 
 .search-results .rating {
@@ -282,44 +288,61 @@ a.verified-reviews:after {
 	height: 15px;
 }
 
-/* Popularity */
-
+/* Popularity  & Badges*/
 .search-results .popularity {
-	margin: 0;
+	margin: 0 0 10px 0;
+	float:left;
+	clear:both;
 }
 
-.search-results .popularity .popularity-label {
-	margin: 0 0 5px;
-	font-size: .9em;
-	height: 20px;
+.search-results .popularity .popularity-label{
+	background: #f1f1f1 none repeat scroll 0 0;
+    border: 1px solid #d8d8d8;
+    border-radius: 2px;
+    color: #333;
+    float: left;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-right: 10px;
+    padding: 10px;
+    text-transform: capitalize;
+    transition: all 0.1s ease-in-out 0s;
+    text-align: center;
+    min-width: 100px;
+    margin-bottom:10px;
 }
 
 .search-results .popularity [class^="label-part-"] {
-	color: #fff;
-	background: #666;
-	padding: 1px 3px;
-	float: left;
 }
 
-.search-results .popularity .label-part-rank {
-	padding-left: 7px;
+.search-results .popularity .label-part-rank{
+	color: #357ebd;
+    text-transform: uppercase;
+    font-weight:500;
 }
 
-.search-results .popularity .label-part-hotel-type {
+.search-results .popularity .label-part-hotel-type{
 	padding-left: 0px;
 }
 
-.search-results .popularity .label-part-location {
-	color: #bbb;
-	padding-right: 7px;
+.search-results .popularity .label-part-location{
+	color: #aaa;
+    display: block;
+    font-weight: 400;
+    text-transform: none;
+    transition: all 0.1s ease-in-out 0s;
+	float:none;
 }
 
-.search-results .popularity a {
+.search-results .popularity a{
 	display: inline-block;
 	padding: 1px 6px;
 	color: #999;
 }
 
+.show-similar-hotels{
+	float:left;
+}
 /* Stars */
 
 .search-results .hotel .stars{
@@ -355,7 +378,7 @@ a.verified-reviews:after {
 	background: #119a11;
 	color: #fff;
 	font-size: .8em;
-}	
+}
 
 .search-results .hotel .rank-wrapper {
 	display:table-cell;
@@ -415,8 +438,6 @@ a.verified-reviews:after {
 .search-results .hotel .hotel-type,
 .search-results .hotel .highlights,
 .search-results .hotel .summary-sentence {
-	float: left;
-	width: 500px;
 	font-weight: 300;
 	font-size: 1.1em;
 }
@@ -424,12 +445,13 @@ a.verified-reviews:after {
 .search-results .hotel .highlights {
 	color: #666;
 	font-style: italic;
+	padding-top: 7px;
 }
 
 .search-results .hotel .highlights span {
 	display: block;
 	float: left;
-	margin: 5px 5px 0 0;
+	margin: 0px 5px 5px 0;
 }
 
 .search-results .hotel .hotel-type span {

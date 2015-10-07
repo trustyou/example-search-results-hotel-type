@@ -46,24 +46,33 @@
 							<div class="counter">{{reviewsCount}} {{i18n.reviews}}</div>
 						</div>
 					</div>
-						<div class="popularity">
-							<div class="popularity-label">
-								<span class="label-part-rank">#{{rank}}</span>
-								<span class="label-part-hotel-type">{{categoryName}}</span>
-								<span class="label-part-location">{{i18n.inBerlin}}</span>
-								{{#showAll}}
-								<a href="#search-results-{{categoryId}}" data-toggle="tab" class="show-similar-hotels">{{i18n.similarHotels}} &raquo;</a>
-								{{/showAll}}
-							</div>
-						</div>
 					<p class="summary-sentence">
 						{{summarySentence}}
 					</p>
-					<p class="highlights">
-						{{#highlights}}
-						<span>&ldquo;{{text}}&rdquo;</span>
-						{{/highlights}}
-					</p>
+					<div class="popularity">
+						<div class="popularity-label">
+							<span class="label-part-rank">{{rank}}</span>
+							<span class="label-part-hotel-type">{{categoryName}}</span>
+							<span class="label-part-location">{{i18n.inBerlin}}</span>
+						</div>
+						<div class="highlights">
+							{{#highlights}}
+							<span>&ldquo;{{text}}&rdquo;</span>
+							{{/highlights}}
+						</div>
+					</div>
+					<div class="popularity">
+						{{#additionalBadges}}
+						<div class="popularity-label">
+							<span class="label-part-rank">{{badgeRank}}</span>
+							<span class="label-part-hotel-type">{{badgeName}}</span>
+							<span class="label-part-location">{{i18n.inBerlin}}</span>
+						</div>
+						{{/additionalBadges}}
+					</div>
+					{{#showAll}}
+					<a href="#search-results-{{categoryId}}" data-toggle="tab" class="show-similar-hotels">{{i18n.similarHotels}} &raquo;</a>
+					{{/showAll}}
 				</div>
 			</div>
 		</script>

@@ -161,7 +161,8 @@
 			summarySentence: "",
 			showAll: showAll,
 			lang: lang,
-			i18n: i18n[lang]
+			i18n: i18n[lang],
+			additionalBadges: []
 		};
 
 		/*
@@ -212,12 +213,17 @@
 			categories = categories.concat(category.sub_category_list);
 		}); 
 
+		var categoryDir = {};
+
 		// ... and finally hotel types
-		var category = categories.concat(reviewSummary.hotel_type_list)
+		categories.concat(reviewSummary.hotel_type_list)
+		// store them in an easily accessable way
+		.forEach(function(cat) {
+			categoryDir[cat.category_id] = cat
+		})
+
 		// find the current category
-		.filter(function(cat) {
-			return cat.category_id === categoryId
-		})[0]
+		var category = categoryDir[categoryId]
 
 		// save the category name...
 		templateData.categoryName = category.category_name
@@ -275,6 +281,64 @@
 					text: highlight
 				};
 			});
+
+		// get some additional badges this hotel has
+		// filter the badge list by the different badge types, remove the current badge
+		// sort them, take the top 2
+		// save all badges in the same format
+
+		// there is only one summary badge, so no need to sort and slice here
+		var summaryBadge = reviewSummary.badge_list.filter(
+			function(badge) {
+				return badge.badge_type === "ranking"
+			})
+		.map(
+			function(badge) {
+				var popularity = badge.badge_data.popularity.toFixed()
+				return {
+					badgeName: "Overall Rating",
+					badgeRank: "Top " + popularity + "%",
+				};
+			});
+
+		var htypeBadges = reviewSummary.badge_list.filter(
+			function(badge) {
+				return badge.badge_type === "hotel_type"
+					&& badge.badge_data.category_id != categoryId
+					&& categoryDir[badge.badge_data.category_id]
+			})
+		.sort(function(a, b) {
+				return a.badge_data.popularity - b.badge_data.popularity;
+			})
+		.slice(0,2)
+		.map(
+			function(badge) {
+				var popularity = badge.badge_data.popularity.toFixed()
+				return {
+					badgeName: categoryDir[badge.badge_data.category_id].category_name,
+					badgeRank: "Top " + popularity + "%",
+				};
+			});
+
+		var categoryBadges = reviewSummary.badge_list.filter(
+			function(badge) {
+				return badge.badge_type === "category"
+					&& badge.badge_data.category_id != categoryId
+			})
+		.sort(function(a, b) {
+				return a.badge_data.rank - b.badge_data.rank;
+			})
+		.slice(0,2)
+		.map(
+			function(badge) {
+				return {
+					badgeName: categoryDir[badge.badge_data.category_id].category_name,
+					badgeRank: "#" + badge.badge_data.rank,
+				};
+			});
+
+		//concatenate the three badge lists
+		templateData["additionalBadges"] = summaryBadge.concat(htypeBadges).concat(categoryBadges)
 
 		// render the template, and display the hotel
 		var hotelRendered = Mustache.render(hotelTemplate, templateData);
@@ -361,10 +425,10 @@
 			.slice(0, 5);
 
 			// Now render each hotel!
-			hotelsByType[categoryId].forEach(function(hotel, index) {
+			hotelsByType[categoryId].forEach(function(hotel) {
 				var hotelData = hotel.hotelData;
 				var reviewSummary = hotel.response;
-				var rank = index + 1;
+				var rank = "Top " + hotel.popularity.toFixed() + "%";
 				renderHotel(hotelData, reviewSummary, categoryId, rank, false);
 			});
 		}
@@ -379,24 +443,35 @@
 				return a.rank - b.rank;
 			})
 			.forEach(function(hotel, index) {
-				renderHotel(hotel.hotelData, hotel.response, categoryId, hotel.rank, false);
+				var rank = "#" + hotel.rank;
+				renderHotel(hotel.hotelData, hotel.response, categoryId, rank, false);
 			});
 		}
 
 		/*
-		Render the "Best Mix" page. Take the top hotel from a pre-defined
-		list of categories.
+		Render the "Best Mix" page. Take the top hotel from pre-defined
+		lists of categories and hotel types.
 		*/
-		["111", "11e", "14c", "24", "201", "171", "131", "16h", "16c", "16d", "16b"].forEach(function(categoryId) {
-			// merge category and hotel type lists
-			for (var hotel in hotelsByCategory) { hotelsByType[hotel] = hotelsByCategory[hotel]; }
+		["111", "11e", "14c", "24", "201", "171", "131"].forEach(function(categoryId) {
+			// pick the correct filter from the merged list
+			if (hotelsByCategory[categoryId].length > 0) {
+				// as we sorted the hotels above, we just take the first one here
+				var topHotel = hotelsByCategory[categoryId][0];
+				var hotelData = topHotel.hotelData;
+				var reviewSummary = topHotel.response;
+				renderHotel(hotelData, reviewSummary, categoryId, "#1", true);
+			}
+		});
+
+		["16h", "16c", "16d", "16b"].forEach(function(categoryId) {
 			// pick the correct filter from the merged list
 			if (hotelsByType[categoryId].length > 0) {
 				// as we sorted the hotels above, we just take the first one here
 				var topHotel = hotelsByType[categoryId][0];
 				var hotelData = topHotel.hotelData;
 				var reviewSummary = topHotel.response;
-				renderHotel(hotelData, reviewSummary, categoryId, 1, true);
+				var rank = "Top " + topHotel.popularity.toFixed() + "%";
+				renderHotel(hotelData, reviewSummary, categoryId, rank, true);
 			}
 		});
 	}
