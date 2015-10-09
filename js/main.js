@@ -333,7 +333,7 @@
 			function(badge) {
 				return {
 					badgeName: categoryDir[badge.badge_data.category_id].category_name,
-					badgeRank: "#" + badge.badge_data.rank,
+					badgeRank: "Best",
 				};
 			});
 
@@ -443,7 +443,7 @@
 				return a.rank - b.rank;
 			})
 			.forEach(function(hotel, index) {
-				var rank = "#" + hotel.rank;
+				var rank = "Best";
 				renderHotel(hotel.hotelData, hotel.response, categoryId, rank, false);
 			});
 		}
@@ -459,7 +459,7 @@
 				var topHotel = hotelsByCategory[categoryId][0];
 				var hotelData = topHotel.hotelData;
 				var reviewSummary = topHotel.response;
-				renderHotel(hotelData, reviewSummary, categoryId, "#1", true);
+				renderHotel(hotelData, reviewSummary, categoryId, "Best", true);
 			}
 		});
 
