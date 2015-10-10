@@ -242,38 +242,6 @@
 			});
 		}
 
-		// we only want to show 3 highlights in total (of course you can show more)
-		if (highlights.length < 3) {
-			/*
-			If the combined highlights of the category and subcategory
-			together are less than 3, we will fill the remaining spots with
-			highlights from our general category list of that hotel,
-			which we sort by relevance first. We take only highlight per category,
-			to not get repetitive.
-			*/
-			categories.sort(function(catA, catB) {
-				return catB.relevance - catA.relevance;
-			})
-			.forEach(function(category) {
-				if (category.highlight_list.length > 0) {
-					/*
-					If there are highlights for this category, pick
-					the first one.
-					*/
-					var highlight = category.highlight_list[0].text;
-						/*
-						Note that highlights can repeat in different
-						categories, so we have to check if the text is present
-						already before adding.
-						*/
-						if (highlights.indexOf(highlight) === -1) {
-							highlights.push(highlight);
-						}
-					}
-				});
-		}
-
-
 		// take the top three highlights
 		templateData.highlights = highlights.slice(0, 3).map(
 			function(highlight) {
