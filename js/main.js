@@ -222,6 +222,11 @@
 
 		// find the current category
 		var category = categoryDir[categoryId];
+		if (categoryDir.hasOwnProperty(categoryId)) {
+			category = categoryDir[categoryId];
+		} else {
+			return;
+		}
 
 		// save the category name...
 		templateData.categoryName = category.category_name;
@@ -290,6 +295,7 @@
 			function(badge) {
 				return badge.badge_type === "category"
 					&& badge.badge_data.category_id != categoryId
+					&& categoryDir.hasOwnProperty(badge.badge_data.category_id)
 			})
 		.sort(function(a, b) {
 				return a.badge_data.rank - b.badge_data.rank;
