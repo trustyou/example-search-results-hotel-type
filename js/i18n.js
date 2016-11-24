@@ -115,33 +115,15 @@ var i18n = {
 };
 
 var lang = (function(){
-	var loc = location.search,
-		args = null,
-		lang = null;
-
-	if(loc[loc.length - 1] == "/"){
-		loc = loc.substring(1, loc.length - 1);
-	}
-	else {
-		loc = loc.substring(1, loc.length);
-	}
-
-	args = loc.split("&");
-	var len = args.length,
-		arg = null;
-
-	for(var i = 0; i < len; i++){
-		arg = args[i].split('=');
-		if(arg[0] == "lang"){
-			lang = arg[1];
-			break
+	
+	var query = location.search.substr(1);
+	var lang = "en";
+	query.split("&").forEach(function(part) {
+		var item = part.split("=");
+		if (item[0] == "lang" && i18n.hasOwnProperty(item[1])) {
+			lang = item[1];
 		}
-	}
+	});
+	return lang;
 
-	if( lang != null && lang in i18n){
-		return lang;
-	}
-	else{
-		return "en";
-	}
 })();

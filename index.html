@@ -5,9 +5,9 @@
 		<title>TrustYou API &ndash; Search Result List Demo</title>
 
 		<!-- These CSS files are for styling purposes only; they are not required to visualize the TrustYou API -->
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,500,700"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,500,700"/>
 		<link rel="stylesheet" href="https://cdn.trustyou.com/apps/trustyou-iconic/public/css/trustyou-iconic.min.latest.css"/>
-		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="css/trustscore.css"/>
 		<link rel="stylesheet" href="css/style.css"/>
 
@@ -51,9 +51,8 @@
 					</p>
 					<div class="popularity">
 						<div class="popularity-label">
-							<span class="label-part-rank">{{rank}}</span>
-							<span class="label-part-hotel-type">{{categoryName}}</span>
-							<span class="label-part-location">{{i18n.inBerlin}}</span>
+							<span class="label-part-hotel-type">{{badge.text}}</span>
+							<span class="label-part-location">{{badge.subtext}}</span>
 						</div>
 						<div class="highlights">
 							{{#highlights}}
@@ -64,9 +63,8 @@
 					<div class="popularity">
 						{{#additionalBadges}}
 						<div class="popularity-label">
-							<span class="label-part-rank">{{badgeRank}}</span>
-							<span class="label-part-hotel-type">{{badgeName}}</span>
-							<span class="label-part-location">{{i18n.inBerlin}}</span>
+							<span class="label-part-hotel-type">{{&text}}</span>
+							<span class="label-part-location">{{&subtext}}</span>
 						</div>
 						{{/additionalBadges}}
 					</div>
@@ -308,7 +306,7 @@
 				</div>
 
 				<a href="http://trustyou.com" class="verified-reviews">
-					<img src="http://api.trustyou.com/static/img/verified-reviews.png?lang=zh" alt="Verified Reviews TrustYou" />
+					<img src="https://api.trustyou.com/static/img/verified-reviews.png?lang=zh" alt="Verified Reviews TrustYou" />
 				</a>
 			</div>
 		</script>
@@ -318,9 +316,9 @@
 	<body class="trustyou-ui">
 
 		<!-- See js/main.js for what happens next :) -->
-		<script src="http://cdn.jsdelivr.net/mustache.js/0.8.1/mustache.min.js"></script>
-		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="js/i18n.js"></script>
 		<script src="js/main.js"></script>
 	</body>
