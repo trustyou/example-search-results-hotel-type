@@ -228,6 +228,10 @@
 			if (response.meta.code !== 200) {
 				throw "Request failed!";
 			}
+			// skip hotels which have no data available
+			if (response.response.summary === null) {
+			  return;
+			}
 			/*
 			Responses are guaranteed to be in the same order as the
 			request_list we passed earlier. Therefore, we can merge the
