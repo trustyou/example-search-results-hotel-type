@@ -80,6 +80,8 @@
 		{tyId: "843a8c92-2a08-46cb-803a-1a120a645318", name: "Stars Guesthouse Berlin", image: "img/Stars_Guesthouse_Berlin.jpg"},
 	];
 
+	let apikey = "22222222-2222-2222-2222-222222222222"
+
 	// render container div with selected language
 	var containerTemplate = $("#tmpl-container").html();
 	$("body").html(Mustache.render(containerTemplate, {i18n: i18n[lang]}));
@@ -107,7 +109,7 @@
 			This is a demo API key, do not reuse it!
 			Contact TrustYou to receive your own.
 			*/
-			key: "a06294d3-4d58-45c8-97a1-5c905922e03a"
+			key: apikey
 		},
 		// Usage of JSONP is not required for server-side calls
 		dataType: "jsonp"
