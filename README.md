@@ -18,7 +18,7 @@ In addition to this we have also added a toolbar for filtering the search result
 Live example
 ------------
 
-You can try out the live version of this example [here](http://trustyou.github.io/example-search-results-hotel-type/).
+You can try out the live version of this example [here](https://trustyou.github.io/example-search-results-hotel-type/).
 
 
 ![alt tag](img/preview.jpg)
