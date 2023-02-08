@@ -165,7 +165,8 @@
 			i18n: i18n[lang],
 			// this data will be filled in by the code below
 			summarySentence: "",
-			additionalBadges: []
+			additionalBadges: [],
+			apikey: apikey
 		};
 
 		/*

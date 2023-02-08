@@ -14,11 +14,10 @@ In addition to this we have also added a toolbar for filtering the search result
 - romantic
 - luxury
 
+Hotel data gathering is implemented via a bulk request for performance optimization. Trustscore data are extracted from this data and displayed by customized code.
+
 
 Live example
 ------------
 
 You can try out the live version of this example [here](https://trustyou.github.io/example-search-results-hotel-type/).
-
-
-![alt tag](img/preview.jpg)
